@@ -102,9 +102,9 @@
             <div class="ui card">
                 <div class="content">
                     <div class="header">《${title}》</div>
-                    <div class="meta">${author} ${publisher}</div>
+                    <div class="meta">${catalog}</div>
                     <div class="description">
-
+                        <p>${sub2}...</p>
                     </div>
                 </div>
             </div>
