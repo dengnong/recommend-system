@@ -5,15 +5,15 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 /**
  * Created by 54472 on 2017/11/12.
  */
-public class WebXml extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[] {ApplicationContextXml.class};
+        return new Class<?>[] {RootConfig.class};
     }
 
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[] {DispatcherServletXml.class};
+        return new Class<?>[] {WebConfig.class};
     }
 
     protected String[] getServletMappings() {
