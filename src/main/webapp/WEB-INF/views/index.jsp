@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Index</title>
-    <link href="../../statics/css/semantic.css" rel="stylesheet" type="text/css"/>
+    <link href="../../statics/css/semantic.min.css" rel="stylesheet" type="text/css"/>
     <script src="../../statics/js/jquery-3.2.1.min.js"></script>
     <script src="../../statics/js/semantic.min.js"></script>
 
@@ -37,43 +37,15 @@
             background-size: cover;
         }
     </style>
-
-    <script>
-        $(document).ready(function () {
-            $('.ui.form').form({
-                account: {
-                    identifier: 'account',
-                    rules: [
-                        {
-                            type: 'empty',
-                            prompt: '用户名必填！'
-                        }
-                    ]
-                },
-                password: {
-                    identifier: 'password',
-                    rules: [
-                        {
-                            type: 'length[6]',
-                            prompt: '密码最少6位！'
-                        }
-                    ]
-                }
-            }, {
-                inline: true,
-                on: 'submit'
-            })
-
-            ;
-
-        });
-    </script>
-
 </head>
 
 <body>
 <div class="ui raised segment">
-    <h3 class="ui inverted blue bock header">Login</h3>
+        <div class="ui breadcrumb">
+            <div class="section">Login</div>
+            <div class="divider">|</div>
+            <a class="active section">Sign up</a>
+        </div>
     <div class="ui two column grid basic segment">
         <div class="column">
             <div class="ui blue stacked segment">
@@ -111,8 +83,38 @@
             </div>
         </div>
     </div>
-    <div class="ui vertical divider">&</div>
+    <div class="ui vertical divider"><i class="unlinkify icon"></i></div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('.ui.form').form({
+            account: {
+                identifier: 'account',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '用户名必填！'
+                    }
+                ]
+            },
+            password: {
+                identifier: 'password',
+                rules: [
+                    {
+                        type: 'length[6]',
+                        prompt: '密码最少6位！'
+                    }
+                ]
+            }
+        }, {
+            inline: true,
+            on: 'submit'
+        })
+
+        ;
+
+    });
+</script>
 
 </body>
 

@@ -8,12 +8,6 @@
   <name>recommend-system Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-      <version>4.12</version>
-    </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
     <dependency>
@@ -58,32 +52,32 @@
       <version>2.0</version>
     </dependency>
 
-      <dependency>
-          <groupId>javax.servlet</groupId>
-          <artifactId>jstl</artifactId>
-          <version>1.2</version>
-      </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
 
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>5.1.39</version>
     </dependency>
-      <dependency>
-          <groupId>org.springframework.security</groupId>
-          <artifactId>spring-security-config</artifactId>
-          <version>4.2.3.RELEASE</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework.security</groupId>
-          <artifactId>spring-security-config</artifactId>
-          <version>4.2.3.RELEASE</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework.security</groupId>
-          <artifactId>spring-security-web</artifactId>
-          <version>4.2.3.RELEASE</version>
-      </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>4.2.3.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>4.2.3.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <version>4.2.3.RELEASE</version>
+    </dependency>
 
     <dependency>
       <groupId>commons-beanutils</groupId>
@@ -126,6 +120,14 @@
       <classifier>jdk15</classifier>
       <version>2.2.3</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.38</version>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

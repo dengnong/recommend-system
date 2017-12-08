@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 import static com.application.JuheBookAPI.getJuheBooksJson;
@@ -22,7 +21,7 @@ public class IndexController {
 
     @RequestMapping("/index")
     public String index(Model model) throws IOException {
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map;
 //        map = getDoubanBooksJson();
         map = getJuheBooksJson();
         model.addAttribute("title", map.get("title"));
