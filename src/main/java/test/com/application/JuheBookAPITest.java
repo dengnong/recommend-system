@@ -8,7 +8,8 @@ import org.junit.Test;
 * JuheBookAPI Tester. 
 * 
 * @author <Authors name> 
-* @version 1.0
+* @since <pre>ʮһ�� 14, 2017</pre> 
+* @version 1.0 
 */ 
 public class JuheBookAPITest {
     private static final String url = "http://apis.juhe.cn/goodbook/query";
@@ -24,6 +25,7 @@ public class JuheBookAPITest {
 
     /**
      * Method: getHtmlJsonByUrl(String urlTemp)
+     * GET����ͼ������
      */
     @Test
     public void testGetHtmlJsonByUrl() throws Exception {
