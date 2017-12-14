@@ -15,7 +15,8 @@ import org.springframework.web.servlet.view.JstlView;
  *
  */
 @Configuration
-@ComponentScan(basePackages = {"com.controller"}, useDefaultFilters = false,
+@EnableWebMvc
+@ComponentScan(basePackages = {"com.controller", "com.config"}, useDefaultFilters = false,
         includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {
                 Controller.class, ControllerAdvice.class
         })})

@@ -38,37 +38,6 @@
         }
     </style>
 
-    <script>
-        $(document).ready(function () {
-            $('.ui.form').form({
-                account: {
-                    identifier: 'account',
-                    rules: [
-                        {
-                            type: 'empty',
-                            prompt: '用户名必填！'
-                        }
-                    ]
-                },
-                password: {
-                    identifier: 'password',
-                    rules: [
-                        {
-                            type: 'length[6]',
-                            prompt: '密码最少6位！'
-                        }
-                    ]
-                }
-            }, {
-                inline: true,
-                on: 'submit'
-            })
-
-            ;
-
-        });
-    </script>
-
 </head>
 
 <body>
@@ -117,6 +86,37 @@
     </div>
     <div class="ui vertical divider"><i class="unlinkify icon"></i></div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('.ui.form').form({
+            account: {
+                identifier: 'account',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '用户名必填！'
+                    }
+                ]
+            },
+            password: {
+                identifier: 'password',
+                rules: [
+                    {
+                        type: 'length[6]',
+                        prompt: '密码最少6位！'
+                    }
+                ]
+            }
+        }, {
+            inline: true,
+            on: 'submit'
+        })
+
+        ;
+
+    });
+</script>
 
 </body>
 

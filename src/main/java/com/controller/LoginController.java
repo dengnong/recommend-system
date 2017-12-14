@@ -15,7 +15,7 @@ import java.util.Map;
  * Created by 54472 on 2017/11/12.
  */
 @Controller
-public class IndexController{
+public class LoginController {
 
     @Autowired
     @Qualifier(value = "getBookInfoServiceImpl")
@@ -23,7 +23,7 @@ public class IndexController{
 
     @RequestMapping("/")
     public String home() {
-        return "redirect: /index";
+        return "redirect: /home";
     }
 
     @RequestMapping("/index")
