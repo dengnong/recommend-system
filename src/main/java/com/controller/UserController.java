@@ -19,10 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.time.LocalDateTime;
 
 /**
- * @author : Chung Junbin
- * @email : <a href="mailto:rekadowney@163.com">发送邮件</a>
- * @createDate : 2016-09-01 22:01
- * @description :
+ *
  */
 @Controller
 @RequestMapping(value = "/user")

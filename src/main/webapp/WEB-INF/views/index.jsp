@@ -73,7 +73,11 @@
 
 <body>
 <div class="ui raised segment">
-    <h3 class="ui inverted blue bock header">Login</h3>
+    <div class="ui breadcrumb">
+        <div class="section">LOGIN</div>
+        <div class="divider"> / </div>
+        <a class="active section">REGISTER</a>
+    </div>
     <div class="ui two column grid basic segment">
         <div class="column">
             <div class="ui blue stacked segment">
@@ -102,16 +106,16 @@
             <div class="ui card">
                 <div class="content">
                     <div class="header">《${title}》</div>
-                    <div class="meta">${author} ${publisher}</div>
+                    <div class="meta">${catalog}</div>
                     <div class="description">
-
+                        ${sub2}...
                     </div>
                 </div>
             </div>
             </div>
         </div>
     </div>
-    <div class="ui vertical divider">&</div>
+    <div class="ui vertical divider"><i class="unlinkify icon"></i></div>
 </div>
 
 </body>

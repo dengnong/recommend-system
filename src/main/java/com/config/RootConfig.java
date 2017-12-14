@@ -29,7 +29,7 @@ import java.util.Map;
 @ComponentScan(basePackages = {"com.repository", "com.service"}, excludeFilters = {
         @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class, ControllerAdvice.class})
 })
-public class SpringConfig {
+public class RootConfig {
 
     /**
      * 数据源配置

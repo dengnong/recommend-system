@@ -19,7 +19,7 @@ import org.springframework.web.servlet.view.JstlView;
         includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {
                 Controller.class, ControllerAdvice.class
         })})
-public class SpringMvcConfig extends WebMvcConfigurationSupport {
+public class WebConfig extends WebMvcConfigurationSupport {
 
     @Bean(name = "viewResolver")
     public ViewResolver viewResolver() {
