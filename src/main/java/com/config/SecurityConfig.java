@@ -17,10 +17,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        // 设置不拦截规则
-        web.ignoring().antMatchers("/statics/**");
+       web.ignoring().antMatchers("/statics/");
 
-    }
+    }      // 设置不拦截规则
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

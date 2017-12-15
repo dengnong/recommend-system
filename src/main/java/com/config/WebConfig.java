@@ -3,17 +3,22 @@ package com.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
 
 /**
  *
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.controller")
+@ComponentScan(basePackages = {"com"}, useDefaultFilters = false,
+        includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {
+                Controller.class, ControllerAdvice.class
+        })})
 public class WebConfig extends WebMvcConfigurationSupport {
 
     @Bean
@@ -22,8 +27,6 @@ public class WebConfig extends WebMvcConfigurationSupport {
         viewResolver.setPrefix("/WEB-INF/views/");
         viewResolver.setSuffix(".jsp");
         viewResolver.setExposeContextBeansAsAttributes(true);
-        viewResolver.setViewClass(JstlView.class);
-        viewResolver.setContentType("text/html; charset=UTF-8");
         return viewResolver;
     }
 

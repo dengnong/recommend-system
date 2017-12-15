@@ -10,8 +10,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.persistence.SharedCacheMode;
 import java.util.HashMap;
@@ -29,7 +27,6 @@ import java.util.Map;
 @PropertySource(encoding = "UTF-8", value = {"classpath:bundle/db.properties", "classpath:bundle/hbm.properties"})
 @ComponentScan(basePackages = {"com.repository", "com.service"}, excludeFilters = {
         @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class,
-                ControllerAdvice.class, EnableWebMvc.class
         })
 })
 public class DBConfig {

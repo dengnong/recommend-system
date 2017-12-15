@@ -33,7 +33,7 @@
         }
 
         body {
-            background-image: url("/statics/image/login.jpg");
+            background-image: url("../../statics/image/login.jpg");
             background-size: cover;
         }
     </style>

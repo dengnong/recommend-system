@@ -25,38 +25,56 @@
                 <i class="search icon"></i>
                 <input type="text" placeholder="Search">
                 <div class="ui basic floating dropdown button">
-                    <div class="text">此页</div>
+                    <div class="text">图书</div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <div class="item">这个组织</div>
-                        <div class="item">输入网址</div>
+                        <div class="item">图书</div>
+                        <div class="item">电影</div>
+                        <div class="item">烹饪</div>
                     </div>
                 </div>
-            </div>
-
-        </div>
-        <div class="right item">
-            <div class="ui action input">
-                <input type="text" placeholder="引导到...">
                 <div class="ui button">Go</div>
             </div>
+
+        </div>
+
+        <div class="center item">
+            <button class="ui green basic button">图书</button>
+        </div>
+        <div class="center item">
+            <button class="ui orange basic button">电影</button>
+        </div>
+        <div class="center item">
+            <button class="ui violet basic button">烹饪</button>
+        </div>
+
+        <div class="right item">
+            <button class="circular ui icon button">
+                <i class="icon settings"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="ui vertical stripe quote segment aligned row">
+        <div class="ui equal width stackable internally celled grid">
+            <div class="center aligned row">
+                <div class="column">
+                    <p>11111111111</p>
+                </div>
+                <div class="column">
+                    <p>22222222222</p>
+                </div>
+            </div>
         </div>
     </div>
 
 </div>
 
-<div class="ui right action left icon input">
-    <i class="search icon"></i>
-    <input type="text" placeholder="Search">
-    <div class="ui basic floating dropdown button">
-        <div class="text">此页</div>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-            <div class="item">这个组织</div>
-            <div class="item">输入网址</div>
-        </div>
-    </div>
-</div>
+<script>
+    $('.ui.dropdown')
+        .dropdown()
+    ;
+</script>
 
 </body>
 </html>
