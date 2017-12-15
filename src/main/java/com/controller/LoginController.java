@@ -27,15 +27,15 @@ public class LoginController {
     }
 
     @RequestMapping("/index")
-    public String index(Model model) throws IOException {
+    public String login(Model model) throws IOException {
         Map<String, String> map = new HashMap<>();
-        map = getBookInfoService.getJuheBooksJson();
-        model.addAttribute("title", map.get("title"));
-//        model.addAttribute("author", map.get("author"));
-//        model.addAttribute("publisher", map.get("publisher"));
-//        model.addAttribute("summary", map.get("summary"));
-        model.addAttribute("catalog", map.get("catalog"));
-        model.addAttribute("sub2", map.get("sub2").substring(0, 203));
+        //map = getBookInfoService.getJuheBooksJson();
+//        model.addAttribute("title", map.get("title"));
+////        model.addAttribute("author", map.get("author"));
+////        model.addAttribute("publisher", map.get("publisher"));
+////        model.addAttribute("summary", map.get("summary"));
+//        model.addAttribute("catalog", map.get("catalog"));
+//        model.addAttribute("sub2", map.get("sub2").substring(0, 203));
         return "/index";
     }
 }

@@ -16,12 +16,12 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{RootConfig.class};
+        return new Class<?>[]{DBConfig.class, RootConfig.class};
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[]{WebConfig.class};
+        return new Class<?>[]{RootConfig.class};
     }
 
     @Override
@@ -29,5 +29,4 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
         // Enable Not Found Exception throw
         registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
     }
-
 }

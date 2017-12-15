@@ -3,9 +3,6 @@ package com.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -16,17 +13,15 @@ import org.springframework.web.servlet.view.JstlView;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.controller", "com.config"}, useDefaultFilters = false,
-        includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {
-                Controller.class, ControllerAdvice.class
-        })})
+@ComponentScan("com.controller")
 public class WebConfig extends WebMvcConfigurationSupport {
 
-    @Bean(name = "viewResolver")
+    @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("/WEB-INF/views/");
         viewResolver.setSuffix(".jsp");
+        viewResolver.setExposeContextBeansAsAttributes(true);
         viewResolver.setViewClass(JstlView.class);
         viewResolver.setContentType("text/html; charset=UTF-8");
         return viewResolver;
@@ -34,16 +29,13 @@ public class WebConfig extends WebMvcConfigurationSupport {
 
     // 添加静态资源映射
     @Override
-    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/css/**").addResourceLocations("/statics/css/");
-        registry.addResourceHandler("/js/**").addResourceLocations("/statics/js/");
-        registry.addResourceHandler("/image/**").addResourceLocations("/statics/image/");
-        super.addResourceHandlers(registry);
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/statics/**").addResourceLocations("/statics/");
     }
 
     // 添加 default servlet 支持
     @Override
-    protected void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
 

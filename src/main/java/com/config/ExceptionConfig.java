@@ -20,13 +20,13 @@ public class ExceptionConfig {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ModelAndView exception(Exception exception, WebRequest request) {
         exception.printStackTrace();
-        return new ModelAndView("/error");
+        return new ModelAndView("error");
     }
 
     @ExceptionHandler(value = { NoHandlerFoundException.class })
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ModelAndView noMapping(Exception exception, WebRequest request) {
         exception.printStackTrace();
-        return new ModelAndView("/404");
+        return new ModelAndView("404");
     }
 }
