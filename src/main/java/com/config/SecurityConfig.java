@@ -17,7 +17,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-       web.ignoring().antMatchers("/statics/");
+       web.ignoring().antMatchers("/");
 
     }      // 设置不拦截规则
 
@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/index")
                 .defaultSuccessUrl("/home")
                 .and()
-                .exceptionHandling().accessDeniedPage("/403")
+                .exceptionHandling().accessDeniedPage("/404")
                 .and()
                 .authorizeRequests()
                 .anyRequest().permitAll();

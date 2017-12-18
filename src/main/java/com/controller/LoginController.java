@@ -23,7 +23,7 @@ public class LoginController {
 
     @RequestMapping("/")
     public String home() {
-        return "redirect: /homePage";
+        return "redirect: /homepage";
     }
 
     @RequestMapping("/index")

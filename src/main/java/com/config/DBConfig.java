@@ -10,6 +10,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 
 import javax.persistence.SharedCacheMode;
 import java.util.HashMap;
@@ -26,7 +27,7 @@ import java.util.Map;
         transactionManagerRef = "transactionManager")
 @PropertySource(encoding = "UTF-8", value = {"classpath:bundle/db.properties", "classpath:bundle/hbm.properties"})
 @ComponentScan(basePackages = {"com.repository", "com.service"}, excludeFilters = {
-        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class,
+        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class, ControllerAdvice.class
         })
 })
 public class DBConfig {

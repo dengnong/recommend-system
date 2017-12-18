@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -15,7 +16,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com"}, useDefaultFilters = false,
+@ComponentScan(basePackages = {"com.controller"}, useDefaultFilters = false,
         includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {
                 Controller.class, ControllerAdvice.class
         })})
@@ -42,4 +43,8 @@ public class WebConfig extends WebMvcConfigurationSupport {
         configurer.enable();
     }
 
+    @Bean
+    public HandlerMapping resourceHandlerMapping() {
+        return super.resourceHandlerMapping();
+    }
 }

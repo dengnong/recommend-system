@@ -25,8 +25,7 @@ public class ExceptionConfig {
 
     @ExceptionHandler(value = { NoHandlerFoundException.class })
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ModelAndView noMapping(Exception exception, WebRequest request) {
-        exception.printStackTrace();
+    public ModelAndView noMapping() {
         return new ModelAndView("404");
     }
 }

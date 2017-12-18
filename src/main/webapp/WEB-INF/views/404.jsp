@@ -9,8 +9,16 @@
 <html>
 <head>
     <title>404</title>
+    <link href="../../statics/css/semantic.css" rel="stylesheet" type="text/css"/>
+    <script src="../../statics/js/jquery-3.2.1.min.js"></script>
+    <script src="../../statics/js/semantic.min.js"></script>
+
 </head>
 <body>
-<p>404040404040404</p>
+<div class="ui container">
+
+    <img class="ui fluid image" src="../../statics/image/404.jpg">
+
+</div>
 </body>
 </html>
