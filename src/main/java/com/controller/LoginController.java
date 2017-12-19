@@ -26,7 +26,7 @@ public class LoginController {
         return "redirect: /homepage";
     }
 
-    @RequestMapping("/index")
+    @RequestMapping("/login")
     public String login(Model model) throws IOException {
         Map<String, String> map = new HashMap<>();
         //map = getBookInfoService.getJuheBooksJson();
@@ -36,6 +36,6 @@ public class LoginController {
 ////        model.addAttribute("summary", map.get("summary"));
 //        model.addAttribute("catalog", map.get("catalog"));
 //        model.addAttribute("sub2", map.get("sub2").substring(0, 203));
-        return "/index";
+        return "login";
     }
 }

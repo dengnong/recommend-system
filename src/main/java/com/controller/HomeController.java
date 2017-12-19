@@ -1,6 +1,7 @@
 package com.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -10,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     @RequestMapping("/homepage")
-    public String homeController(){
+    public String homeController(Model model){
+        String[] list = {"ew", "ewq", "ewe", "fsd", "dq", "eqwe"};
+        model.addAttribute("lists", list);
+
         return "home";
     }
 }
