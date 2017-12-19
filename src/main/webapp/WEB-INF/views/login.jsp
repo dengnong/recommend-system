@@ -45,7 +45,7 @@
     <div class="ui breadcrumb">
         <div class="section">LOGIN</div>
         <div class="divider"> / </div>
-        <a class="active section">REGISTER</a>
+        <a class="active section" onclick="register();">REGISTER</a>
     </div>
     <div class="ui two column grid basic segment">
         <div class="column">
@@ -85,37 +85,158 @@
         </div>
     </div>
     <div class="ui vertical divider"><i class="unlinkify icon"></i></div>
+
+    <!-- modal -->
+    <div class="ui small modal">
+        <div class="ui stackable inverted divided equal height stackable grid">
+            <div class="ui two column grid basic segment">
+                <div class="ui row">
+                    <div class="column">
+                        <div class="ui centered green header">
+                            Register
+                        </div>
+                        <div class="ui segment">
+                            <form class="ui form" id="registerForm" name="registerForm">
+                                <div class="field">
+                                    <lebel>your account</lebel>
+                                    <div class="ui left icon input">
+                                        <input type="text" name="regAccount" id="regAccount">
+                                        <i class="user icon"></i>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <lebel>password</lebel>
+                                    <div class="ui left icon input">
+                                        <input type="password" name="regPassword" id="regPassword">
+                                        <i class="lock icon"></i>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <lebel>password</lebel>
+                                    <div class="ui left icon input">
+                                        <input type="password" name="regRePassword" id="regRePassword">
+                                        <i class="lock icon"></i>
+                                    </div>
+                                </div>
+                                <div class="ui error message"></div>
+                                <div class="extra content">
+                                    <div class="ui two buttons">
+                                        <div class="ui basic green submit button">register</div>
+                                        <div class="ui basic red button">cancel</div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="ui centered red header">
+                            What's your interested in?
+                        </div>
+                        <div class="ui segment">
+                            <select class="ui fluid search dropdown" multiple="">
+                                <option value="">State</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
 </div>
 
 <script>
-    $(document).ready(function () {
-        $('.ui.form').form({
-            account: {
-                identifier: 'account',
-                rules: [
-                    {
-                        type: 'empty',
-                        prompt: '用户名必填！'
-                    }
-                ]
-            },
-            password: {
-                identifier: 'password',
-                rules: [
-                    {
-                        type: 'length[6]',
-                        prompt: '密码最少6位！'
-                    }
-                ]
-            }
-        }, {
-            inline: true,
-            on: 'submit'
-        })
-
-        ;
-
+    $('#form').form({
+        account: {
+            identifier: 'account',
+            rules: [
+                {
+                    type: 'empty',
+                    prompt: '用户名必填！'
+                }
+            ]
+        },
+        password: {
+            identifier: 'password',
+            rules: [
+                {
+                    type: 'length[6]',
+                    prompt: '密码最少6位！'
+                }
+            ]
+        },
+    }, {
+        inline: true,
+        on: 'submit'
     });
+</script>
+
+<script>
+    $('#registerForm').form({
+        account: {
+            identifier: 'regAccount',
+            rules: [
+                {
+                    type: 'empty',
+                    prompt: '用户名必填！'
+                }
+            ]
+        },
+        password: {
+            identifier: 'regPassword',
+            rules: [
+                {
+                    type: 'length[6]',
+                    prompt: '密码最少6位！'
+                }
+            ]
+        },
+        match: {
+            identifier: 'regRePassword',
+            rules: [
+                {
+                    type: 'match[regPassword]',
+                    prompt: '两次密码输入不一致！'
+                }
+            ]
+        }
+    }, {
+        inline: true,
+        on: 'blur',
+        onSuccess:submitForm
+    });
+
+    function submitForm() {
+        alert("666");
+    }
+</script>
+
+<script>
+    function register(){
+        $('.small.modal')
+            .modal('show')
+        ;
+    }
+</script>
+
+<script>
+    $('.ui.dropdown')
+        .dropdown()
+    ;
 </script>
 
 </body>
