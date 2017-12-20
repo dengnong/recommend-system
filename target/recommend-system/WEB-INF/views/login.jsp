@@ -56,7 +56,7 @@
                         <lebel>your account</lebel>
                         <div class="ui left icon input">
                             <input type="text" name="account" id="account">
-                            <i class="userDemo icon"></i>
+                            <i class="user icon"></i>
                         </div>
                     </div>
                     <div class="field">
@@ -102,7 +102,7 @@
                                     <lebel>your account</lebel>
                                     <div class="ui left icon input">
                                         <input type="text" name="regAccount" id="regAccount">
-                                        <i class="userDemo icon"></i>
+                                        <i class="user icon"></i>
                                     </div>
                                 </div>
                                 <div class="field">
@@ -122,7 +122,7 @@
                                 <div class="ui error message"></div>
                                 <div class="extra content">
                                     <div class="ui two buttons">
-                                        <div class="ui basic green submit button" onclick="Resubmit();">register</div>
+                                        <div class="ui basic green submit button" onclick="regSubmit();">register</div>
                                         <div class="ui basic red button" onclick="cancel();">cancel</div>
                                     </div>
                                 </div>

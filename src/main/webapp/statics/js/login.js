@@ -29,7 +29,7 @@ function submit(){
 }
 
 //注册表单校验
-function Resubmit(){
+function regSubmit(){
     $('#registerForm').form({
         account: {
             identifier: 'regAccount',
@@ -71,7 +71,7 @@ function submitForm() {
     var password = $("#regPassword").val();
     $.ajax({
         type: "POST",
-        url: "/register",
+        url: "/userRegister",
         headers: {'Content-type': 'application/json'},
         data:JSON.stringify( {
             "account":account,
@@ -79,13 +79,18 @@ function submitForm() {
         }),
         dataType: 'json',
         success:function(data){
-            if(data.success == 1) {
+            if(data.success) {
                 window.top.location = "/homepage";
             }else{
-                alert("发生错误")
+                alert("发生错误");
             }
-        }
+        },
+        error:function()
+        {
+            alert("服务器无响应");
+        },
     });
+    return false;
 }
 
 // 注册模态框

@@ -12,9 +12,7 @@ public class HomeController {
 
     @RequestMapping("/homepage")
     public String homeController(Model model){
-        String[] list = {"ew", "ewq", "ewe", "fsd", "dq", "eqwe"};
-        model.addAttribute("lists", list);
-
+        System.out.println("redirect page: homepage");
         return "home";
     }
 }
