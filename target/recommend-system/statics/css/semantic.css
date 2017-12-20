@@ -8167,7 +8167,7 @@ i.icon.window.close.outline:before {
   content: "\f2d4";
 }
 
-/* User Actions */
+/* UserDemo Actions */
 
 i.icon.wait:before {
   content: "\f017";
@@ -14881,7 +14881,7 @@ ol.ui.horizontal.list li:before,
 *******************************/
 
 /*******************************
-    User Variable Overrides
+    UserDemo Variable Overrides
 *******************************/
 /*!
  * # Semantic UI 2.2.12 - Loader
@@ -25217,7 +25217,7 @@ Floated Menu / Item
 *******************************/
 
 /*******************************
-    User Variable Overrides
+    UserDemo Variable Overrides
 *******************************/
 /*!
  * # Semantic UI 2.2.12 - Item
@@ -26291,7 +26291,7 @@ a.ui.card:hover,
 *******************************/
 
 /*******************************
-    User Variable Overrides
+    UserDemo Variable Overrides
 *******************************/
 /*!
  * # Semantic UI 2.2.12 - Comment
@@ -26450,7 +26450,7 @@ a.ui.card:hover,
 }
 
 /*--------------------
-     User Actions
+     UserDemo Actions
 ---------------------*/
 
 .ui.comments .comment .actions {
@@ -26576,7 +26576,7 @@ a.ui.card:hover,
 *******************************/
 
 /*******************************
-    User Variable Overrides
+    UserDemo Variable Overrides
 *******************************/
 /*!
  * # Semantic UI 2.2.12 - Feed
@@ -26734,7 +26734,7 @@ a.ui.card:hover,
 }
 
 /*--------------
-      User
+      UserDemo
 ---------------*/
 
 .ui.feed > .event > .content .user {
@@ -26890,7 +26890,7 @@ a.ui.card:hover,
 *******************************/
 
 /*******************************
-    User Variable Overrides
+    UserDemo Variable Overrides
 *******************************/
 /*!
  * # Semantic UI 2.2.12 - Item
@@ -27410,7 +27410,7 @@ a.ui.card:hover,
 *******************************/
 
 /*******************************
-    User Variable Overrides
+    UserDemo Variable Overrides
 *******************************/
 /*!
  * # Semantic UI 2.2.12 - Statistic
@@ -28046,7 +28046,7 @@ a.ui.card:hover,
 *******************************/
 
 /*******************************
-    User Variable Overrides
+    UserDemo Variable Overrides
 *******************************/
 /*!
  * # Semantic UI 2.2.12 - Accordion
@@ -28308,7 +28308,7 @@ a.ui.card:hover,
 }
 
 /*******************************
-        User Overrides
+        UserDemo Overrides
 *******************************/
 /*!
  * # Semantic UI 2.2.12 - Checkbox
@@ -29202,7 +29202,7 @@ body.dimmable > .dimmer {
 *******************************/
 
 /*******************************
-        User Overrides
+        UserDemo Overrides
 *******************************/
 /*!
  * # Semantic UI 2.2.12 - Dropdown
@@ -29682,7 +29682,7 @@ select.ui.dropdown {
   word-wrap: normal;
 }
 
-/* User Item */
+/* UserDemo Item */
 
 .ui.selection.dropdown .menu > .hidden.addition.item {
   display: none;
@@ -30816,7 +30816,7 @@ select.ui.dropdown {
 */
 
 /*******************************
-        User Overrides
+        UserDemo Overrides
 *******************************/
 /*!
  * # Semantic UI 2.2.12 - Video
@@ -31776,7 +31776,7 @@ a.ui.nag {
 *******************************/
 
 /*******************************
-        User Overrides
+        UserDemo Overrides
 *******************************/
 /*!
  * # Semantic UI 2.2.12 - Popup
@@ -32587,7 +32587,7 @@ a.ui.nag {
 *******************************/
 
 /*******************************
-        User Overrides
+        UserDemo Overrides
 *******************************/
 /*!
  * # Semantic UI 2.2.12 - Progress Bar
@@ -33319,7 +33319,7 @@ a.ui.nag {
 }
 
 /*-------------------
-   User Interactive
+   UserDemo Interactive
 --------------------*/
 
 /* Selected Rating */
@@ -34038,7 +34038,7 @@ a.ui.nag {
 *******************************/
 
 /*******************************
-        User Overrides
+        UserDemo Overrides
 *******************************/
 /*!
  * # Semantic UI 2.2.12 - Sidebar
@@ -34882,7 +34882,7 @@ body.pushable > .pusher {
 *******************************/
 
 /*******************************
-        User Overrides
+        UserDemo Overrides
 *******************************/
 /*!
  * # Semantic UI 2.2.12 - Transition

@@ -12,6 +12,7 @@
     <link href="../../statics/css/semantic.css" rel="stylesheet" type="text/css"/>
     <script src="../../statics/js/jquery-3.2.1.min.js"></script>
     <script src="../../statics/js/semantic.min.js"></script>
+    <script src="../../statics/js/login.js"></script>
 
     <style type="text/css">
         .ui.card {
@@ -55,7 +56,7 @@
                         <lebel>your account</lebel>
                         <div class="ui left icon input">
                             <input type="text" name="account" id="account">
-                            <i class="user icon"></i>
+                            <i class="userDemo icon"></i>
                         </div>
                     </div>
                     <div class="field">
@@ -65,7 +66,7 @@
                             <i class="lock icon"></i>
                         </div>
                     </div>
-                    <div class="fluid ui submit button">Submit</div>
+                    <div class="fluid ui submit button" onclick="submit();">Submit</div>
                     <div class="ui error message"></div>
                 </form>
             </div>
@@ -101,7 +102,7 @@
                                     <lebel>your account</lebel>
                                     <div class="ui left icon input">
                                         <input type="text" name="regAccount" id="regAccount">
-                                        <i class="user icon"></i>
+                                        <i class="userDemo icon"></i>
                                     </div>
                                 </div>
                                 <div class="field">
@@ -121,8 +122,8 @@
                                 <div class="ui error message"></div>
                                 <div class="extra content">
                                     <div class="ui two buttons">
-                                        <div class="ui basic green submit button">register</div>
-                                        <div class="ui basic red button">cancel</div>
+                                        <div class="ui basic green submit button" onclick="Resubmit();">register</div>
+                                        <div class="ui basic red button" onclick="cancel();">cancel</div>
                                     </div>
                                 </div>
                             </form>
@@ -134,22 +135,16 @@
                         </div>
                         <div class="ui segment">
                             <select class="ui fluid search dropdown" multiple="">
-                                <option value="">State</option>
-                                <option value="AL">Alabama</option>
-                                <option value="AK">Alaska</option>
-                                <option value="IL">Illinois</option>
-                                <option value="IN">Indiana</option>
-                                <option value="IA">Iowa</option>
-                                <option value="KS">Kansas</option>
-                                <option value="PA">Pennsylvania</option>
-                                <option value="RI">Rhode Island</option>
-                                <option value="SC">South Carolina</option>
-                                <option value="VT">Vermont</option>
-                                <option value="VA">Virginia</option>
-                                <option value="WA">Washington</option>
-                                <option value="WV">West Virginia</option>
-                                <option value="WI">Wisconsin</option>
-                                <option value="WY">Wyoming</option>
+                                <option value="动作">动作</option>
+                                <option value="喜剧">喜剧</option>
+                                <option value="青春">青春</option>
+                                <option value="惊悚">惊悚</option>
+                                <option value="成龙">成龙</option>
+                                <option value="张艺谋">张艺谋</option>
+                                <option value="郭敬明">郭敬明</option>
+                                <option value="红烧肉">红烧肉</option>
+                                <option value="白菜">白菜</option>
+                                <option value="水煮鱼">水煮鱼</option>
                             </select>
                         </div>
                     </div>
@@ -159,80 +154,7 @@
     </div>
 </div>
 
-<script>
-    $('#form').form({
-        account: {
-            identifier: 'account',
-            rules: [
-                {
-                    type: 'empty',
-                    prompt: '用户名必填！'
-                }
-            ]
-        },
-        password: {
-            identifier: 'password',
-            rules: [
-                {
-                    type: 'length[6]',
-                    prompt: '密码最少6位！'
-                }
-            ]
-        },
-    }, {
-        inline: true,
-        on: 'submit'
-    });
-</script>
-
-<script>
-    $('#registerForm').form({
-        account: {
-            identifier: 'regAccount',
-            rules: [
-                {
-                    type: 'empty',
-                    prompt: '用户名必填！'
-                }
-            ]
-        },
-        password: {
-            identifier: 'regPassword',
-            rules: [
-                {
-                    type: 'length[6]',
-                    prompt: '密码最少6位！'
-                }
-            ]
-        },
-        match: {
-            identifier: 'regRePassword',
-            rules: [
-                {
-                    type: 'match[regPassword]',
-                    prompt: '两次密码输入不一致！'
-                }
-            ]
-        }
-    }, {
-        inline: true,
-        on: 'blur',
-        onSuccess:submitForm
-    });
-
-    function submitForm() {
-        alert("666");
-    }
-</script>
-
-<script>
-    function register(){
-        $('.small.modal')
-            .modal('show')
-        ;
-    }
-</script>
-
+<%--下拉框初始化--%>
 <script>
     $('.ui.dropdown')
         .dropdown()

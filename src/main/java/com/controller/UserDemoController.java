@@ -1,10 +1,10 @@
 package com.controller;
 
 import com.converter.gson.GsonLocalDateTimeConverter;
-import com.entity.User;
+import com.entity.UserDemo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.service.UserService;
+import com.service.UserDemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -23,11 +23,11 @@ import java.time.LocalDateTime;
  */
 @Controller
 @RequestMapping(value = "/user")
-public class UserController {
+public class UserDemoController {
 
     @Autowired
-    @Qualifier(value = "userService")
-    private UserService userService;
+    @Qualifier(value = "userDemoService")
+    private UserDemoService userDemoService;
 
     private final Gson gson = new GsonBuilder()
             .registerTypeAdapter(LocalDateTime.class, new GsonLocalDateTimeConverter())
@@ -37,7 +37,7 @@ public class UserController {
     public ModelAndView add(@RequestParam(value = "name") String name,
                             @RequestParam(value = "createTime")
                             @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime now) {
-        userService.save(new User(name, now));
+        userDemoService.save(new UserDemo(name, now));
         return null;
     }
 
@@ -45,21 +45,21 @@ public class UserController {
     public String addRedirect(@RequestParam(value = "name") String name,
                               @RequestParam(value = "createTime")
                               @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime now) {
-        User user = userService.save(new User(name, now));
-        return "redirect:/user/" + user.getId() + "/show";
+        UserDemo userDemo = userDemoService.save(new UserDemo(name, now));
+        return "redirect:/userDemo/" + userDemo.getId() + "/show";
     }
 
     @RequestMapping(value = "/{id:\\d+}/delete", method = RequestMethod.GET)
     @ResponseBody
     public String delete(@PathVariable(value = "id") int id) {
-        userService.delete(id);
+        userDemoService.delete(id);
         return "{\"status\":200}";
     }
 
     @RequestMapping(value = "/{id:\\d+}/show", method = RequestMethod.GET)
     @ResponseBody
     public String show(@PathVariable(value = "id") int id) {
-        return gson.toJson(userService.findOne(id));
+        return gson.toJson(userDemoService.findOne(id));
     }
 
     @RequestMapping(value = "/page/{pageOffset:\\d+}/{pageSize:\\d+}", method = RequestMethod.GET)
@@ -67,7 +67,7 @@ public class UserController {
                        @PathVariable(value = "pageSize") int pageSize,
                        Model model) {
         Pageable pageable = new PageRequest(pageOffset, pageSize);
-        Page<User> userPage = userService.find(pageable);
+        Page<UserDemo> userPage = userDemoService.find(pageable);
         model.addAttribute("page", userPage);
         return "page";
     }

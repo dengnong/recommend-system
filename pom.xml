@@ -154,6 +154,11 @@
       <artifactId>spring-security-web</artifactId>
       <version>3.2.5.RELEASE</version>
     </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.38</version>
+    </dependency>
 
   </dependencies>
 

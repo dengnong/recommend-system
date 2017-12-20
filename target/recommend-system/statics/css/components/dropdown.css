@@ -454,7 +454,7 @@ select.ui.dropdown {
   word-wrap: normal;
 }
 
-/* User Item */
+/* UserDemo Item */
 .ui.selection.dropdown .menu > .hidden.addition.item {
   display: none;
 }
@@ -1469,6 +1469,6 @@ select.ui.dropdown {
 
 
 /*******************************
-        User Overrides
+        UserDemo Overrides
 *******************************/
 

@@ -13,10 +13,6 @@
     <link href="../../statics/css/semantic.css" rel="stylesheet" type="text/css"/>
     <script src="../../statics/js/jquery-3.2.1.min.js"></script>
     <script src="../../statics/js/semantic.min.js"></script>
-
-    <style>
-        .divcss5{ height:120px; width:123px;}
-    </style>
 </head>
 
 <body>
@@ -234,8 +230,7 @@
                 .closest('.message')
                 .transition('fade')
             ;
-        })
-    ;
+        });
 </script>
 
 <script>

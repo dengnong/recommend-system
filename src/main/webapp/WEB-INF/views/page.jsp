@@ -1,7 +1,7 @@
 <%--suppress ALL --%>
 <%--
   Created by IntelliJ IDEA.
-  User: Chung Junbin
+  UserDemo: Chung Junbin
   Date: 2016-09-02 14:35
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
@@ -35,13 +35,13 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${requestScope.page.content}" var="user">
+            <c:forEach items="${requestScope.page.content}" var="userDemo">
                 <tr>
-                    <td>${user.id}</td>
-                    <td>${user.username}</td>
-                    <td>${user.createTime}</td>
-                    <td>${user.valid}</td>
-                    <td><a href="${pageContext.request.contextPath}/user/${user.id}/delete">删除</a></td>
+                    <td>${userDemo.id}</td>
+                    <td>${userDemo.username}</td>
+                    <td>${userDemo.createTime}</td>
+                    <td>${userDemo.valid}</td>
+                    <td><a href="${pageContext.request.contextPath}/userDemo/${userDemo.id}/delete">删除</a></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -57,12 +57,12 @@
                             首页
                         </c:when>
                         <c:otherwise>
-                            <a href="${contextPath}/user/page/0/10">首页</a>
+                            <a href="${contextPath}/userDemo/page/0/10">首页</a>
                         </c:otherwise>
                     </c:choose>　　
 
                     <c:if test="${requestScope.page.hasPrevious()}">
-                        <a href="${contextPath}/user/page/${currentPageOffset - 1}/10">上一页</a>
+                        <a href="${contextPath}/userDemo/page/${currentPageOffset - 1}/10">上一页</a>
                     </c:if>　　
 
                     <select id="forwardPage">
@@ -72,7 +72,7 @@
                     </select>　　
 
                     <c:if test="${requestScope.page.hasNext()}">
-                        <a href="${contextPath}/user/page/${currentPageOffset + 1}/10">下一页</a>
+                        <a href="${contextPath}/userDemo/page/${currentPageOffset + 1}/10">下一页</a>
                     </c:if>　　
 
                     <c:choose>
@@ -80,7 +80,7 @@
                             尾页
                         </c:when>
                         <c:otherwise>
-                            <a href="${contextPath}/user/page/${requestScope.page.totalPages}/10">尾页</a>
+                            <a href="${contextPath}/userDemo/page/${requestScope.page.totalPages}/10">尾页</a>
                         </c:otherwise>
                     </c:choose>　　
 
@@ -99,7 +99,7 @@
         forwardPage.on("change", function () {
             var pageOffset = forwardPage.val() - 1;
             var pageSize = 10;
-            window.location.href = "${contextPath}/user/page/" + pageOffset + "/" + pageSize;
+            window.location.href = "${contextPath}/userDemo/page/" + pageOffset + "/" + pageSize;
         });
     });
 </script>
