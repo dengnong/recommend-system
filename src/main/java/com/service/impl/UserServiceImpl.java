@@ -15,20 +15,34 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * 验证账号密码
+     * @param username
+     * @param password
+     * @return
+     */
     @Override
     public Boolean initUser(String username, String password) {
         User user = userRepository.findByUsernameAndPassword(username, password);
-        System.out.println(user.getUsername());
+        if(user != null) {
+            return true;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * 验证用户存在
+     * @param username
+     * @return
+     */
+    @Override
+    public Boolean initUserExist(String username) {
+        User user = userRepository.findByUsername(username);
         if(user != null) {
             return true;
         } else {
             return false;
         }
-    }
-
-    @Override
-    public Boolean initUserExist(String username) {
-        User user = userRepository.findByUsername(username);
-        return null;
     }
 }

@@ -4,6 +4,7 @@ package com.converter;
  * Created by 54472 on 2017/12/20.
  */
 public class ResultMsg {
+    public static final int EXIST = 9;
 
     public static final int SUCCESS = 1;
 
@@ -35,6 +36,14 @@ public class ResultMsg {
 
     public static ResultMsg fault(String msg) {
         return new ResultMsg(FAULT, msg);
+    }
+
+    public static ResultMsg exist() {
+        return new ResultMsg(EXIST, "存在");
+    }
+
+    public static ResultMsg exist(String msg) {
+        return new ResultMsg(EXIST, msg);
     }
 
     public int getSuccess() {

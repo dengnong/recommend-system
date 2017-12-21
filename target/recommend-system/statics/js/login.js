@@ -24,7 +24,8 @@ function submit(){
         },
     }, {
         inline: true,
-        on: 'submit'
+        on: 'blur',
+        onSuccess: submitLoginForm
     });
 }
 
@@ -79,9 +80,11 @@ function submitForm() {
         }),
         dataType: 'json',
         success:function(data){
-            if(data.success) {
+            if(data.success == 1) {
                 window.top.location = "/homepage";
-            }else{
+            }else if(data.success == 9) {
+                alert("用户名已存在");
+            } else {
                 alert("发生错误");
             }
         },
@@ -90,6 +93,35 @@ function submitForm() {
             alert("服务器无响应");
         },
     });
+    return false;
+}
+
+function submitLoginForm() {
+    var account = $("#account").val();
+    var password = $("#password").val();
+    $.ajax({
+        type: "POST",
+        url: "/userLogin",
+        headers: {'Content-type': 'application/json'},
+        data: JSON.stringify({
+            "account": account,
+            "password": password
+        }),
+        dataType: 'json',
+        success:function(data) {
+            if(data.success == 1) {
+                window.top.location = "/homepage";
+            } else if(data.success == 0){
+                alert("请检查您的账号与密码");
+            } else {
+                alert("发生错误");
+            }
+        },
+        error:function()
+        {
+            alert("服务器无响应");
+        },
+    })
     return false;
 }
 

@@ -7,7 +7,15 @@ import java.util.Map;
  */
 public interface GetBookInfoService {
 
+    /**
+     * Juhe图书API
+     * @return
+     */
     Map<String, String> getJuheBooksJson();
 
+    /**
+     * Douban图书API
+     * @return
+     */
     Map<String, String> getDoubanBooksJson();
 }
