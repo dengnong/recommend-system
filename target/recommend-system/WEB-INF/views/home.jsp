@@ -115,25 +115,28 @@
                 <div class="center aligned row">
                     <div class="twelve wide column">
                         <div class="ui three column grid">
-                            <c:forEach begin="1" end="6">
+                            <c:forEach items="${moviesShowing}" var="movies" begin="1" end="6">
                                 <div class="column">
                                     <div class="ui link cards">
                                         <div class="card">
                                             <div class="ui centered image">
-                                                <img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2507566212.webp">
+                                                <img src="${movies.get("imageLarge")}">
                                             </div>
                                             <div class="content">
-                                                <div class="header">奇门遁甲</div>
+                                                <div class="header">${movies.get("movieName")}</div>
                                                 <div class="meta">
-                                                    <a>导演: 袁和平</a>
+                                                    <a href="${movies.get("directorUrl")}">导演: ${movies.get("directorName")}</a>
                                                 </div>
-                                                <div class="description">
-                                                    动作 / 奇幻
-                                                </div>
+                                                <%--<div class="description">--%>
+                                                    <%--${movies.get("label")}--%>
+                                                <%--</div>--%>
                                             </div>
                                             <div class="extra content">
                                                 <div class="extra">
-                                                    <div class="ui star rating" data-rating="3"></div>
+                                                    <div class="ui star rating"
+                                                         data-rating="${movies.get("rating")}"
+                                                         data-max-rating="5">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

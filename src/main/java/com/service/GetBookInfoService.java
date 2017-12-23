@@ -4,6 +4,7 @@ import java.util.Map;
 
 /**
  * Created by 54472 on 2017/12/14.
+ * 书籍信息网络API接口
  */
 public interface GetBookInfoService {
 
