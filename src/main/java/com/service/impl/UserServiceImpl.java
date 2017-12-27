@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
         if(user != null) {
             return true;
         } else {
-            return null;
+            return false;
         }
     }
 

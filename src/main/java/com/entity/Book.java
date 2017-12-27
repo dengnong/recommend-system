@@ -21,31 +21,44 @@ public class Book implements Serializable {
     private String bookName;
 
     @Column(name = "rate")
-    private float bookRate;
+    private String bookRate;
 
-    @Column(name = "price")
-    private String bookPrice;
+    @Column(name = "rate_count")
+    private String rateCount;
 
-    @Column(name = "publisher")
-    private String bookPublisher;
+    @Column(name = "author")
+    private String bookAuthor;
 
-    @Column(name = "url")
+    @Column(name = "book_url")
     private String bookUrl;
+
+    @Column(name = "book_img")
+    private String bookImg;
 
     @Column(name = "book_id")
     private String bookId;
 
+    @Column(name = "kind")
+    private String kind;
+
+    @Column(name = "introduction")
+    private String introduction;
+
     public Book() {
     }
 
-    public Book(String bookName, float bookRate,
-                String bookPrice, String bookPublisher, String bookUrl, String bookId) {
+    public Book(String bookName, String bookRate, String rateCount, String bookAuthor,
+                String bookUrl, String bookImg, String bookId,
+                String kind, String introduction) {
         this.bookName = bookName;
         this.bookRate = bookRate;
-        this.bookPrice = bookPrice;
-        this.bookPublisher = bookPublisher;
+        this.rateCount = rateCount;
+        this.bookAuthor = bookAuthor;
         this.bookUrl = bookUrl;
+        this.bookImg = bookImg;
         this.bookId = bookId;
+        this.kind = kind;
+        this.introduction = introduction;
     }
 
     public int getId() {
@@ -60,28 +73,28 @@ public class Book implements Serializable {
         this.bookName = bookName;
     }
 
-    public float getBookRate() {
+    public String getBookRate() {
         return bookRate;
     }
 
-    public void setBookRate(float bookRate) {
+    public void setBookRate(String bookRate) {
         this.bookRate = bookRate;
     }
 
-    public String getBookPrice() {
-        return bookPrice;
+    public String getRateCount() {
+        return rateCount;
     }
 
-    public void setBookPrice(String bookPrice) {
-        this.bookPrice = bookPrice;
+    public void setRateCount(String rateCount) {
+        this.rateCount = rateCount;
     }
 
-    public String getBookPublisher() {
-        return bookPublisher;
+    public String getBookAuthor() {
+        return bookAuthor;
     }
 
-    public void setBookPublisher(String bookPublisher) {
-        this.bookPublisher = bookPublisher;
+    public void setBookAuthor(String bookAuthor) {
+        this.bookAuthor = bookAuthor;
     }
 
     public String getBookUrl() {
@@ -92,11 +105,35 @@ public class Book implements Serializable {
         this.bookUrl = bookUrl;
     }
 
+    public String getBookImg() {
+        return bookImg;
+    }
+
+    public void setBookImg(String bookImg) {
+        this.bookImg = bookImg;
+    }
+
     public String getBookId() {
         return bookId;
     }
 
     public void setBookId(String bookId) {
         this.bookId = bookId;
+    }
+
+    public String getKind() {
+        return kind;
+    }
+
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
     }
 }

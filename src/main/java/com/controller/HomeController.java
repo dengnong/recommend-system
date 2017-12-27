@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.service.BookService;
 import com.service.GetMovieInfoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,9 @@ public class HomeController {
     @Resource(name = "getMovieInfoServiceImpl")
     private GetMovieInfoService getMovieInfoService;
 
+    @Resource(name = "bookServiceImpl")
+    private BookService bookService;
+
     @RequestMapping("/homepage")
     public String homeController(Model model){
         System.out.println("redirect page: homepage");
@@ -23,6 +27,7 @@ public class HomeController {
 //            model.addAttribute("moviesShowing", GetMoviesTask.moviesShowingInfo);
 //        }
 
+        model.addAttribute("randomBooks", bookService.getRandomBookInfo());
         model.addAttribute("moviesShowing", getMovieInfoService.getTimeMoviesJson());
         return "home";
     }

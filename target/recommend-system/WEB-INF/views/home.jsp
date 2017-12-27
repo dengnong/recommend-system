@@ -13,6 +13,7 @@
     <link href="../../statics/css/semantic.css" rel="stylesheet" type="text/css"/>
     <script src="../../statics/js/jquery-3.2.1.min.js"></script>
     <script src="../../statics/js/semantic.min.js"></script>
+    <script src="../../statics/js/home.js"></script>
 </head>
 
 <body>
@@ -34,7 +35,7 @@
                         <div class="item">美味</div>
                     </div>
                 </div>
-                <div class="ui button">Go</div>
+                <div class="ui dropdown button">Go</div>
             </div>
 
         </div>
@@ -52,11 +53,41 @@
             <a href="#foodSegment"><h3 class="ui violet header">美味</h3></a>
         </div>
 
-        <div class="right item">
-            <button class="circular ui icon button">
-                <i class="icon settings"></i>
-            </button>
-        </div>
+        <c:choose>
+            <c:when test="${!empty sessionScope.userInfo}">
+                <div class="right item">
+                    <div class="circular ui right pointing icon dropdown button">
+                        <i class="icon heart"></i>
+                        <div class="menu">
+                            <div class="item">
+                                <div class="ui red empty circular label"></div>
+                                书架
+                            </div>
+                            <div class="item">
+                                <div class="ui blue empty circular label"></div>
+                                影墙
+                            </div>
+                            <div class="item">
+                                <div class="ui yellow empty circular label"></div>
+                                菜单
+                            </div>
+                            <div class="divider"></div>
+                            <div class="item">
+                                <i class="sign out icon"></i>
+                                登出
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div class="right item">
+                    <div class="circular ui right pointing icon dropdown button" onclick="toSignIn();">
+                        <i class="icon sign in"></i>
+                    </div>
+                </div>
+            </c:otherwise>
+        </c:choose>
     </div>
 
     <div class="ui info message">
@@ -74,27 +105,23 @@
             <div class="ui equal width stackable internally celled grid">
                 <div class="aligned row">
                     <div class="twelve wide column">
-                        <%--<p>电影</p>--%>
                         <div class="ui divided items">
-                            <c:forEach begin="1" end="5">
+                            <c:forEach items="${randomBooks}" var="books" begin="0" end="4">
                                 <div class="item">
                                     <div class="ui tiny image">
-                                        <img src="../../statics/image/book.jpg">
+                                        <a href="${books.bookUrl}" target="view_window"><img src="${books.bookImg}"></a>
                                     </div>
                                     <div class="content">
-                                        <a class="header">青春万重山</a>
+                                        <a href="${books.bookUrl}" class="header">${books.bookName}</a>
                                         <div class="meta">
-                                            <span>献给毕业生的礼物</span>
+                                            <span>${books.bookAuthor}</span>
                                         </div>
                                         <div class="description">
-                                            <p></p>
+                                            <p>${books.introduction}</p>
                                         </div>
                                         <div class="extra">
-                                            “我”在迪士尼乐园陪孩子度假，突然接到一位同学的婚讯电话。远离集体生活多年的“我”念起大学时代的美好时光。过山车从百米高空坠落，
-                                            在失重的虚慌中，“我”体味到时光飞逝的悸痛。蓦然回首，热泪盈眶，记忆的碎片在眼前一一浮现。
-                                            大学四年，从入校到毕业，“我”历经踌躇满志，困顿迷茫，至落寞离场。“我”遇到的一些人，
-                                            经历的一些事从入校到毕业，“我”历经踌躇满志，困顿迷茫，至落寞离场。“我”遇到的一些人，
-                                            经历的一些事
+                                            <span class="ui tiny orange header">${books.bookRate}</span>
+                                            <span>(${books.rateCount}人参与评价)</span>
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +142,7 @@
                 <div class="center aligned row">
                     <div class="twelve wide column">
                         <div class="ui three column grid">
-                            <c:forEach items="${moviesShowing}" var="movies" begin="1" end="6">
+                            <c:forEach items="${moviesShowing}" var="movies" begin="0" end="5">
                                 <div class="column">
                                     <div class="ui link cards">
                                         <div class="card">
@@ -250,6 +277,12 @@
 
 <script>
     $('.shape').shape();
+</script>
+
+<script>
+    $('.ui.dropdown')
+        .dropdown()
+    ;
 </script>
 
 </body>

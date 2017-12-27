@@ -8,7 +8,7 @@ public class ResultMsg {
 
     public static final int SUCCESS = 1;
 
-    public static final int FAULT = 0;
+    public static final int DENY = 0;
 
     private int success;
 
@@ -30,12 +30,12 @@ public class ResultMsg {
         return new ResultMsg(SUCCESS, msg);
     }
 
-    public static ResultMsg fault() {
-        return new ResultMsg(FAULT, "失败");
+    public static ResultMsg deny() {
+        return new ResultMsg(DENY, "失败");
     }
 
-    public static ResultMsg fault(String msg) {
-        return new ResultMsg(FAULT, msg);
+    public static ResultMsg deny(String msg) {
+        return new ResultMsg(DENY, msg);
     }
 
     public static ResultMsg exist() {

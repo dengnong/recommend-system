@@ -18,32 +18,44 @@ public class Movie {
     @Column(name = "name")
     private String movieName;
 
+    @Column(name = "director")
+    private String director;
+
     @Column(name = "rate")
-    private float movieRate;
-
-    @Column(name = "url")
-    private String movieUrl;
-
-    @Column(name = "release_time")
-    private String relese_time;
-
-    @Column(name = "actors")
-    private String actors;
+    private float rate;
 
     @Column(name = "movie_id")
     private String movieId;
 
+    @Column(name = "actors")
+    private String actors;
+
+    @Column(name = "url")
+    private String url;
+
+    @Column(name = "image")
+    private String image;
+
+    @Column(name = "kind")
+    private String kind;
+
     public Movie() {
     }
 
-    public Movie(String movieName, float movieRate, String movieUrl,
-                 String relese_time, String actors, String movieId) {
+    public Movie(String movieName, String director, float rate, String movieId,
+                 String actors, String url, String image, String kind) {
         this.movieName = movieName;
-        this.movieRate = movieRate;
-        this.movieUrl = movieUrl;
-        this.relese_time = relese_time;
-        this.actors = actors;
+        this.director = director;
+        this.rate = rate;
         this.movieId = movieId;
+        this.actors = actors;
+        this.url = url;
+        this.image = image;
+        this.kind = kind;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getMovieName() {
@@ -54,28 +66,28 @@ public class Movie {
         this.movieName = movieName;
     }
 
-    public float getMovieRate() {
-        return movieRate;
+    public String getDirector() {
+        return director;
     }
 
-    public void setMovieRate(float movieRate) {
-        this.movieRate = movieRate;
+    public void setDirector(String director) {
+        this.director = director;
     }
 
-    public String getMovieUrl() {
-        return movieUrl;
+    public float getRate() {
+        return rate;
     }
 
-    public void setMovieUrl(String movieUrl) {
-        this.movieUrl = movieUrl;
+    public void setRate(float rate) {
+        this.rate = rate;
     }
 
-    public String getRelese_time() {
-        return relese_time;
+    public String getMovieId() {
+        return movieId;
     }
 
-    public void setRelese_time(String relese_time) {
-        this.relese_time = relese_time;
+    public void setMovieId(String movieId) {
+        this.movieId = movieId;
     }
 
     public String getActors() {
@@ -86,11 +98,27 @@ public class Movie {
         this.actors = actors;
     }
 
-    public String getMovieId() {
-        return movieId;
+    public String getUrl() {
+        return url;
     }
 
-    public void setMovieId(String movieId) {
-        this.movieId = movieId;
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getKind() {
+        return kind;
+    }
+
+    public void setKind(String kind) {
+        this.kind = kind;
     }
 }

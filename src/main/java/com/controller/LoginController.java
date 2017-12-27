@@ -66,8 +66,8 @@ public class LoginController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "/userLogin", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
+    @RequestMapping(value = "userLogin", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public Object homeController(@RequestBody Map<String, String> map, Model model) {
         String account = map.get("account");
         String password = characterTransformService.encrypt(map.get("password"));
@@ -75,7 +75,7 @@ public class LoginController {
             model.addAttribute("userInfo", account);
             return ResultMsg.success();
         } else {
-            return ResultMsg.fault();
+            return ResultMsg.deny();
         }
     }
 }
