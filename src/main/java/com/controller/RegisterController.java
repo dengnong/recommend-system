@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.util.Map;
 
 /**
+ * 用户注册
  * Created by 54472 on 2017/12/19.
  */
 @Controller

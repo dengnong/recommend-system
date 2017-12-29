@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 
 /**
+ * 首页展示
  * Created by 54472 on 2017/12/14.
  */
 @Controller

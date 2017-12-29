@@ -3,12 +3,17 @@ package test.com.HQLTest;
 import com.config.DBConfig;
 import com.entity.Book;
 import com.repository.BookRepository;
+import com.service.BookService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -20,6 +25,9 @@ public class BookServiceImplTest {
 
     @Autowired
     private BookRepository bookRepository;
+
+    @Resource(name = "bookServiceImpl")
+    private BookService bookService;
 
     @Test
     public void findBook() {
@@ -33,5 +41,19 @@ public class BookServiceImplTest {
         for(int i = 0; i < 5; i++) {
             System.out.println(book.get(i).getId() + " " + book.get(i).getBookName());
         }
+    }
+
+    @Test
+    public void findAllBook() {
+        Pageable pageable = new PageRequest(10, 20);
+        Page<Book> books = bookService.getAllBookInfo(pageable);
+        for(int i = 0; i < 10; i++) {
+            System.out.println(books.getContent().get(i).getBookAuthor());
+        }
+    }
+
+    @Test
+    public void findBookOrderByRate() {
+
     }
 }

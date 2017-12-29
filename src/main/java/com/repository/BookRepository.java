@@ -14,8 +14,18 @@ public interface BookRepository extends JpaRepository<Book, Serializable> {
 
     @Query(value = "SELECT * FROM book  WHERE id >= round(((SELECT MAX(id) FROM book ))" +
             " * RAND()*100) LIMIT 5", nativeQuery = true)
-    public List<Book> findRandBooks();
+    List<Book> findRandBooks();
 
+    /**
+     * 按分类搜索图书
+     * @param kind
+     * @return
+     */
+    List<Book> findByKind(String kind);
+
+//    Page<Book> findByKindAndOrderByBookRate(String kind);
+//
+//    Page<Book> findAllByKindAndOrderByRateCount(String Kind);
     /**
      * SELECT * FROM book  WHERE id >= " +
      "((SELECT MAX(id) FROM book )-(SELECT MIN(id) FROM book )) " +

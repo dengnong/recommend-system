@@ -4,6 +4,8 @@ import com.entity.Book;
 import com.repository.BookRepository;
 import com.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,4 +23,16 @@ public class BookServiceImpl implements BookService {
         List<Book> list = bookRepository.findRandBooks();
         return list;
     }
+
+    public Page<Book> getAllBookInfo(Pageable pageable) {
+        Page<Book> books = bookRepository.findAll(pageable);
+        return books;
+    }
+
+    public Page<Book> getBookByKind(String kind) {
+//        Page<Book> books = bookRepository.findByKind(kind);
+//        return books;
+        return null;
+    }
+
 }

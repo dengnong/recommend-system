@@ -18,20 +18,20 @@
 <div class="ui container">
     <div class="ui stackable inverted divided equal height stackable grid">
         <div class="center aligned row">
-        <div class="four wide column">
-            <h4 class="ui header">关于</h4>
-        </div>
-        <div class="four wide column">
-            <h4 class="ui header">服务</h4>
-        </div>
-        <div class="four wide column">
-            <h4 class="ui header">页脚</h4>
-        </div>
-        <div class="four wide column">
-            <button class="circular ui big icon button" onclick="toTop();">
-                <i class="icon arrow up"></i>
-            </button>
-        </div>
+            <div class="four wide column">
+                <h4 class="ui header">关于</h4>
+            </div>
+            <div class="four wide column">
+                <h4 class="ui header">服务</h4>
+            </div>
+            <div class="four wide column">
+                <h4 class="ui header">页脚</h4>
+            </div>
+            <div class="four wide column">
+                <button class="circular ui big icon button" onclick="toTop();">
+                    <i class="icon arrow up"></i>
+                </button>
+            </div>
         </div>
     </div>
 </div>
