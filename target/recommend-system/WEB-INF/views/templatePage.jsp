@@ -6,12 +6,16 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 <head>
     <title></title>
-    <link href="../../statics/css/semantic.css" rel="stylesheet" type="text/css"/>
-    <script src="../../statics/js/jquery-3.2.1.min.js"></script>
-    <script src="../../statics/js/semantic.min.js"></script>
+    <link href="<%=basePath%>/statics/css/semantic.css" rel="stylesheet" type="text/css"/>
+    <script src="<%=basePath%>/statics/js/jquery-3.2.1.min.js"></script>
+    <script src="<%=basePath%>/statics/js/semantic.min.js"></script>
 </head>
 
 <body>

@@ -1,8 +1,7 @@
 package com.service;
 
 import com.entity.Book;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.beans.support.PagedListHolder;
 
 import java.util.List;
 
@@ -21,13 +20,37 @@ public interface BookService  {
      * 全部书籍
      * @return
      */
-    Page<Book> getAllBookInfo(Pageable pageable);
+    PagedListHolder<Book> getAllBookInfo(int page, int pageSize);
 
     /**
-     * 小说
-     * @Param kind 小说
+     * 分类查找图书
      * @return
      */
-    Page<Book> getBookByKind(String kind);
+    PagedListHolder<Book> getBookByKind(String kind, int page, int pageSize);
 
+    /**
+     * 按评分排序所有书籍
+     * @return
+     */
+    PagedListHolder<Book> findAllBookByRate(int page, int pageSize);
+
+    /**
+     * 按评价人数排序所有书籍
+     * @return
+     */
+    PagedListHolder<Book> findAllBookByRateCount(int page, int pageSize);
+
+    /**
+     * 找出某类书籍并按照评分降序排列
+     * @param kind
+     * @return
+     */
+    PagedListHolder<Book> findByKindAndOrderByBookRate(String kind, int page, int pageSize);
+
+    /**
+     * 找出某类书籍并按照评价人数降序排列
+     * @param kind
+     * @return
+     */
+    PagedListHolder<Book> findByKindAndOrderByRateCount(String kind, int page, int pageSize);
 }

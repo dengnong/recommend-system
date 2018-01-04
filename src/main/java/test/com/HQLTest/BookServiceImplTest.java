@@ -7,9 +7,8 @@ import com.service.BookService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import org.springframework.beans.support.PagedListHolder;
+import org.springframework.data.domain.*;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -44,16 +43,36 @@ public class BookServiceImplTest {
     }
 
     @Test
-    public void findAllBook() {
-        Pageable pageable = new PageRequest(10, 20);
-        Page<Book> books = bookService.getAllBookInfo(pageable);
-        for(int i = 0; i < 10; i++) {
-            System.out.println(books.getContent().get(i).getBookAuthor());
+    public void orderByRate() {
+        Sort.Order order = new Sort.Order(Sort.Direction.DESC, "rateCount");
+        Pageable pageable = new PageRequest(0, 20, new Sort(order));
+        Page<Book> books = bookRepository.findAll(pageable);
+        for(int i = 0; i < 20; i++) {
+            System.out.println(books.getContent().get(i).getRateCount());
+        }
+//        List<Book> books = bookRepository.findAll(new Sort(Sort.Direction.DESC, "bookRate"));
+    }
+
+    @Test
+    public void order() {
+        Pageable pageable = new PageRequest(0, 20);
+        List<Book> books = bookService.getRandomBookInfo();
+//        Page<Book> page = new PageImpl<>(books, pageable, books.size());
+        PagedListHolder<Book> pagedListHolder = new PagedListHolder<>(books);
+        pagedListHolder.setPageSize(20);
+        pagedListHolder.setPage(0);
+        for(int i = 0; i < 20; i++) {
+            System.out.println(pagedListHolder.getPageList().get(i).getBookRate()
+                    +" " + pagedListHolder.getPageList().get(i).getBookName()
+                    +" " + pagedListHolder.getPage());
         }
     }
 
     @Test
-    public void findBookOrderByRate() {
-
+    public void kindAndOrder() {
+        List<Book> books = bookRepository.findByKindAndOrderByRateCount("武侠");
+        for (int i = 0; i < 50; i++) {
+            System.out.println(books.get(i).getRateCount());
+        }
     }
 }

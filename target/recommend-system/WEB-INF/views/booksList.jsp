@@ -7,6 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 <head>
     <title>图书</title>
@@ -49,29 +53,29 @@
                 <div class="twelve wide column">
                     <div style="float: left;">
                         <div class="ui breadcrumb">
-                            <a class="section">全部</a>
+                            <a class="section" href="/book?kind=全部&page=1&sort=default">全部</a>
                             <div class="divider"> / </div>
-                            <a class="section">小说</a>
+                            <a class="section" href="/book?kind=小说&page=1&sort=default">小说</a>
                             <div class="divider"> / </div>
-                            <a class="section">武侠</a>
+                            <a class="section" href="/book?kind=武侠&page=1&sort=default">武侠</a>
                             <div class="divider"> / </div>
-                            <a class="section">推理</a>
+                            <a class="section" href="/book?kind=推理&page=1&sort=default">推理</a>
                         </div>
                     </div>
                     <div style="float: right;">
                         <div class="ui breadcrumb">
-                            <a class="section">评分</a>
+                            <a class="section" href="/book?kind=${kind}&page=1&sort=rate">评分</a>
                             <div class="divider"> / </div>
-                            <a class="section">热度</a>
+                            <a class="section" href="/book?kind=${kind}&page=1&sort=count">热度</a>
                         </div>
                     </div>
                     <%-- 设置当前页的页码 --%>
-                    <c:set var="currentPageOffset" value="${bookLists.number + 1}"/>
+                    <c:set var="currentPageOffset" value="${bookLists.page + 1}"/>
                     <h5 class="ui horizontal divider header grey header">
                         Page:${currentPageOffset}
                     </h5>
                     <div class="ui divided items">
-                        <c:forEach items="${bookLists.content}" var="books">
+                        <c:forEach items="${bookLists.pageList}" var="books">
                             <div class="item">
                                 <div class="ui tiny image">
                                     <a href="${books.bookUrl}" target="view_window"><img src="${books.bookImg}"></a>
@@ -94,28 +98,28 @@
 
                         <div style="text-align:center">
                             <c:choose>
-                                <c:when test="${bookLists.first}">
+                                <c:when test="${bookLists.firstPage}">
                                     首页
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/bookslist/${kind}/1">首页</a>
+                                    <a href="/book?kind=${kind}&page=1&sort=default">首页</a>
                                 </c:otherwise>
                             </c:choose>　　
 
-                            <c:if test="${bookLists.hasPrevious()}">
-                                <a href="/bookslist/${kind}/${currentPageOffset - 1}">上一页</a>
+                            <c:if test="${!bookLists.firstPage}">
+                                <a href="/book?kind=${kind}&page=${currentPageOffset - 1}&sort=${sort}">上一页</a>
                             </c:if>　　　
 
-                            <c:if test="${bookLists.hasNext()}">
-                                <a href="/bookslist/${kind}/${currentPageOffset + 1}">下一页</a>
+                            <c:if test="${!bookLists.lastPage}">
+                                <a href="/book?kind=${kind}&page=${currentPageOffset + 1}&sort=${sort}">下一页</a>
                             </c:if>　　
 
                             <c:choose>
-                                <c:when test="${bookLists.last}">
+                                <c:when test="${bookLists.lastPage}">
                                     尾页
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="/bookslist/${kind}/${bookLists.totalPages}">尾页</a>
+                                    <a href="/book?kind=${kind}&page=${bookLists.pageCount + 1}&sort=${sort}">尾页</a>
                                 </c:otherwise>
                             </c:choose>　　
                         </div>
