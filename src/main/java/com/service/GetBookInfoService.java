@@ -18,5 +18,5 @@ public interface GetBookInfoService {
      * Douban图书API
      * @return
      */
-    Map<String, String> getDoubanBooksJson();
+    Map<String, String> getDoubanBooksJson(String bookId);
 }

@@ -69,7 +69,7 @@
                             </div>
                             <div class="item">
                                 <div class="ui yellow empty circular label"></div>
-                                菜单
+                                食谱
                             </div>
                             <div class="divider"></div>
                             <div class="item">
@@ -127,7 +127,7 @@
                                 </div>
                             </c:forEach>
                             <div style="text-align:center">
-                                <a href="#" style="text-align:center">
+                                <a href="/books?kind=全部&page=1&sort=defalut" target="_Blank" style="text-align:center">
                                     <i class="add icon"></i>
                                     点击查看更多书籍
                                 </a>
@@ -181,7 +181,7 @@
                         <div style="text-align:center">
                             <a href="#">
                                 <i class="add icon"></i>
-                                点击查看更多书籍
+                                点击查看更多电影
                             </a>
                         </div>
                     </div>

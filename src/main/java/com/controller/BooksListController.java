@@ -20,7 +20,7 @@ public class BooksListController {
     @Resource(name = "bookServiceImpl")
     private BookService bookService;
 
-    @RequestMapping("/book")
+    @RequestMapping("/books")
     public String booksList(@RequestParam("kind") String kind,
                             @RequestParam("page") int pageOffSet,
                             @RequestParam("sort") String sortParam,

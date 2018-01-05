@@ -45,15 +45,25 @@ public class GetBookInfoServiceImpl implements GetBookInfoService {
      *
      * @return the douban books json
      */
-    public Map<String, String> getDoubanBooksJson() {
-        String strUrl = DouBanUrl + 25858904;
+    public Map<String, String> getDoubanBooksJson(String bookId) {
+        String strUrl = DouBanUrl + bookId;
         JSONObject jsonObject = null;
         jsonObject = getJsonByUrlService.getJsonByUrl(strUrl);
         Map<String, String> map = new HashMap<String, String>();
         map.put("title", jsonObject.getString("title")); //书名
         map.put("author", jsonObject.getString("author")); //作者
         map.put("publisher", jsonObject.getString("publisher")); //出版社
-        map.put("summary", jsonObject.getString("summary")); //概述
+        map.put("summary", jsonObject.getString("summary")); //内容简介
+        map.put("author_intro", jsonObject.getString("author_intro")); //作者简介
+        map.put("price", jsonObject.getString("price")); //定价
+        map.put("isbn13", jsonObject.getString("isbn13")); //ISBN号码
+        map.put("series_title", jsonObject.getJSONObject("series").getString("title")); //丛书
+        map.put("numRaters", jsonObject.getJSONObject("rating").getString("numRaters")); //评价人数
+        map.put("average", jsonObject.getJSONObject("rating").getString("average")); //评分
+        map.put("pubdate", jsonObject.getString("pubdate")); // 出版年
+        map.put("pages", jsonObject.getString("pages")); //页数
+        map.put("image", jsonObject.getJSONObject("images").getString("large")); //图片
+
         return map;
     }
 }

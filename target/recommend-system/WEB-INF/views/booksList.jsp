@@ -20,34 +20,14 @@
 </head>
 
 <body>
-
+<%@ include file="headMenu.jsp"%>
 <div class="ui attached message" style="background-color: #F7F6EF">
-    <div class="ui container">
-        <div class="ui stackable inverted divided equal height stackable grid">
-            <div class="center aligned row">
-                <div class="four wide column">
-                    <h1 class="ui brown header"><span><i class="icon book"></i>图书</span></h1>
-                </div>
-                <div class="eight wide column">
-                    <div class="ui mini fluid action input">
-                        <input type="text" placeholder="搜索...">
-                        <button class="ui icon button">
-                            <i class="search icon"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="four wide column">
-                    <h4 class="ui header">页脚</h4>
-                </div>
-            </div>
-        </div>
-    </div>
+    <%@ include file="bookSearch.jsp"%>
 </div>
 
-</div>
 <br>
 <div class="ui container">
-        <div class="ui vertical stripe quote segment aligned row">
+    <div class="ui vertical stripe quote segment aligned row">
         <div class="ui equal width stackable internally celled grid">
             <div class="row">
                 <div class="twelve wide column">
@@ -81,7 +61,7 @@
                                     <a href="${books.bookUrl}" target="view_window"><img src="${books.bookImg}"></a>
                                 </div>
                                 <div class="content">
-                                    <a href="${books.bookUrl}" class="header">${books.bookName}</a>
+                                    <a href="/book?id=${books.bookId}" target="_Blank" class="header">${books.bookName}</a>
                                     <div class="meta">
                                         <span>${books.bookAuthor}</span>
                                     </div>
@@ -136,5 +116,13 @@
     <%@ include file="footer.jsp" %>
 
 </div>
+
+<script>
+    $('.ui.dropdown')
+        .dropdown()
+    ;
+</script>
+
+
 </body>
 </html>
