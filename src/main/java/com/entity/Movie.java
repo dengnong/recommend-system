@@ -22,7 +22,7 @@ public class Movie {
     private String director;
 
     @Column(name = "rate")
-    private float rate;
+    private String rate;
 
     @Column(name = "movie_id")
     private String movieId;
@@ -42,7 +42,7 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(String movieName, String director, float rate, String movieId,
+    public Movie(String movieName, String director, String rate, String movieId,
                  String actors, String url, String image, String kind) {
         this.movieName = movieName;
         this.director = director;
@@ -74,11 +74,11 @@ public class Movie {
         this.director = director;
     }
 
-    public float getRate() {
+    public String getRate() {
         return rate;
     }
 
-    public void setRate(float rate) {
+    public void setRate(String rate) {
         this.rate = rate;
     }
 

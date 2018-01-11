@@ -1,6 +1,8 @@
 package com.repository;
 
 import com.entity.Book;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -21,35 +23,35 @@ public interface BookRepository extends JpaRepository<Book, Serializable> {
      * @param kind pageable
      * @return
      */
-    List<Book> findByKind(String kind);
+    Page<Book> findByKind(String kind, Pageable pageable);
 
     /**
      * 按评价人数降序查找所有书籍
      * @return
      */
-    @Query(value = "SELECT * FROM book ORDER BY rate_count+0  DESC", nativeQuery = true)
-    List<Book> findAllByRateCount();
+    @Query(value = "SELECT * FROM book ORDER BY rate_count+0  DESC /*#pageable*/", nativeQuery = true)
+    Page<Book> findAllByRateCount(Pageable pageable);
 
     /**
      * 按评分降序查询所有书籍
      * @return
      */
-    @Query(value = "SELECT * FROM book ORDER BY rate+0  DESC", nativeQuery = true)
-    List<Book> findAllByRate();
+    @Query(value = "SELECT * FROM book ORDER BY rate+0  DESC /*#pageable*/", nativeQuery = true)
+    Page<Book> findAllByRate(Pageable pageable);
 
     /**
      * 找出某类书籍并按照评分降序排列
      * @param kind
      * @return
      */
-    @Query(value = "SELECT * FROM book WHERE kind = ?1 ORDER BY rate +0 DESC", nativeQuery = true)
-    List<Book> findByKindAndOrderByBookRate(String kind);
+    @Query(value = "SELECT * FROM book WHERE kind = ?1 ORDER BY rate +0 DESC /*#pageable*/", nativeQuery = true)
+    Page<Book> findByKindAndOrderByBookRate(String kind, Pageable pageable);
 
     /**
      * 找出某类书籍并按照评价人数降序排列
      * @param kind
      * @return
      */
-    @Query(value = "SELECT * FROM book WHERE kind = ?1 ORDER BY rate_count +0 DESC", nativeQuery = true)
-    List<Book> findByKindAndOrderByRateCount(String kind);
+    @Query(value = "SELECT * FROM book WHERE kind = ?1 ORDER BY rate_count +0 DESC /*#pageable*/", nativeQuery = true)
+    Page<Book> findByKindAndOrderByRateCount(String kind, Pageable pageable);
 }

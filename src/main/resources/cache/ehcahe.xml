@@ -11,7 +11,34 @@
     />
 
     <cache
-            name="org.junbin.springmvc.domain.User"
+            name="com.entity.Movie"
+            maxElementsInMemory="1000"
+            eternal="false"
+            timeToIdleSeconds="300"
+            timeToLiveSeconds="600"
+            overflowToDisk="true"
+    />
+
+    <cache
+            name="com.entity.Book"
+            maxElementsInMemory="1000"
+            eternal="false"
+            timeToIdleSeconds="300"
+            timeToLiveSeconds="600"
+            overflowToDisk="true"
+    />
+
+    <cache
+            name="com.entity.User"
+            maxElementsInMemory="1000"
+            eternal="false"
+            timeToIdleSeconds="300"
+            timeToLiveSeconds="600"
+            overflowToDisk="true"
+    />
+
+    <cache
+            name="com.entity.UserDemo"
             maxElementsInMemory="1000"
             eternal="false"
             timeToIdleSeconds="300"

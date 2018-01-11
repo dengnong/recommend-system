@@ -70,9 +70,19 @@ public class BookServiceImplTest {
 
     @Test
     public void kindAndOrder() {
-        List<Book> books = bookRepository.findByKindAndOrderByRateCount("武侠");
-        for (int i = 0; i < 50; i++) {
-            System.out.println(books.get(i).getRateCount());
+        Pageable pageable = new PageRequest(0, 20);
+        Page<Book> books = bookRepository.findByKindAndOrderByRateCount("武侠", pageable);
+        for (int i = 0; i < 20; i++) {
+            System.out.println(books.getContent().get(i).getRateCount());
+        }
+    }
+
+    @Test
+    public void kind() {
+        Pageable pageable = new PageRequest(0, 20);
+        Page<Book> books = bookRepository.findByKind("武侠", pageable);
+        for (int i = 0; i < 20; i++) {
+            System.out.println(books.getContent().get(i).getKind());
         }
     }
 }

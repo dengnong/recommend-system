@@ -2,7 +2,9 @@ package com.controller;
 
 import com.entity.Book;
 import com.service.BookService;
-import org.springframework.beans.support.PagedListHolder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,24 +29,25 @@ public class BooksListController {
                             Model model) {
         pageOffSet = pageOffSet - 1;
         int pageSize = 15;
-        PagedListHolder<Book> books = null;
+        Pageable pageable = new PageRequest(pageOffSet, pageSize);
+        Page<Book> books = null;
         //传入页码和每页显示条数
         if(sortParam.equals("rate")) {
             if(kind.equals("全部")) {
-                books = bookService.findAllBookByRate(pageOffSet, pageSize);
+                books = bookService.findAllBookByRate(pageable);
             } else {
-                books = bookService.findByKindAndOrderByBookRate(kind, pageOffSet, pageSize);
+                books = bookService.findByKindAndOrderByBookRate(kind, pageable);
             }
         } else if(sortParam.equals("count")) {
             if(kind.equals("全部")) {
-                books = bookService.findAllBookByRateCount(pageOffSet, pageSize);
+                books = bookService.findAllBookByRateCount(pageable);
             } else {
-                books = bookService.findByKindAndOrderByRateCount(kind, pageOffSet, pageSize);
+                books = bookService.findByKindAndOrderByRateCount(kind, pageable);
             }
         } else if(!kind.equals("全部")){
-            books = bookService.getBookByKind(kind, pageOffSet, pageSize);
+            books = bookService.getBookByKind(kind, pageable);
         } else {
-            books = bookService.getAllBookInfo(pageOffSet, pageSize);
+            books = bookService.getAllBookInfo(pageable);
         }
 
         model.addAttribute("bookLists", books);
