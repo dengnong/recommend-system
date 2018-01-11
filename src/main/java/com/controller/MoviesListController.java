@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.annotation.Resource;
 
 /**
+ * 电影列表
  * Created by 54472 on 2018/1/9.
  */
 @Controller

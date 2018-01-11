@@ -9,8 +9,20 @@
 <html>
 <head>
     <title>error</title>
+    <link href="../../statics/css/semantic.css" rel="stylesheet" type="text/css"/>
+    <script src="../../statics/js/jquery-3.2.1.min.js"></script>
+    <script src="../../statics/js/semantic.min.js"></script>
 </head>
 <body>
-<p>errorerrorerrorerror</p>
+<div class="ui container">
+
+    <br>
+    <img class="ui centered huge rounded image" src="../../statics/image/errorPage.png">
+
+</div>
+<script type="text/javascript">
+    //3秒钟之后跳转到指定的页面
+    setTimeout(window.location.href="/homepage",5);
+</script>
 </body>
 </html>

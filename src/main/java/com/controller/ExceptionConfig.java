@@ -11,6 +11,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import java.io.IOException;
 
 /**
+ * 异常页面
  * Created by 54472 on 2017/12/14.
  */
 @ControllerAdvice

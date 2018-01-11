@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import java.util.Map;
 
 /**
+ * 书籍详细信息
  * Created by 54472 on 2018/1/5.
  */
 @Controller

@@ -20,12 +20,21 @@
         <div class="center aligned row">
             <div class="four wide column">
                 <h4 class="ui header">关于</h4>
+                <div>
+
+                </div>
             </div>
             <div class="four wide column">
                 <h4 class="ui header">服务</h4>
+                <div>
+                    <p>miraclebin@foxmail.com</p>
+                </div>
             </div>
             <div class="four wide column">
-                <h4 class="ui header">页脚</h4>
+                <h4 class="ui header">声明</h4>
+                <div>
+                    
+                </div>
             </div>
             <div class="four wide column">
                 <button class="circular ui big icon button" onclick="toTop();">
