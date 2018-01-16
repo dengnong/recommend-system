@@ -25,7 +25,7 @@ public class BookInfoController {
         try {
             map = getBookInfoService.getDoubanBooksJson(bookId);
         } catch (Exception e) {
-            return "error";
+            return "404";
         }
 
         model.addAttribute("bookInfo", map);

@@ -24,6 +24,7 @@ public class GetMovieInfoServiceImpl implements GetMovieInfoService {
     private static final String locationId = "880"; //成都地区
 
     private static final String doubanApiUrl = "https://api.douban.com/v2/movie/in_theaters";
+    private static final String doubanUrl = "https://api.douban.com/v2/movie/";
 
     /**
      * Time电影正在热映数据
@@ -95,5 +96,45 @@ public class GetMovieInfoServiceImpl implements GetMovieInfoService {
             list.add(map);
         }
         return list;
+    }
+
+    @Override
+    public Map<String, String> getDoubanMoviesJson(String movieId) {
+        String strUrl = doubanUrl + movieId;
+        JSONObject jsonObject = null;
+        jsonObject = getJsonByUrlService.getJsonByUrl(strUrl);
+
+        Map<String, String> map = new HashMap<>();
+        map.put("alt_title", jsonObject.getString("alt_title")); //电影标题
+        map.put("writer", jsonObject.getJSONObject("attrs").getString("writer") //编剧
+                .replaceAll("\\[","").replaceAll("\\]", "").replaceAll("\"", ""));
+        map.put("director", jsonObject.getJSONObject("attrs").getString("director") //导演
+                .replaceAll("\\[","").replaceAll("\\]", "").replaceAll("\"", ""));
+        map.put("country", jsonObject.getJSONObject("attrs").getString("country") //国家
+                .replaceAll("\\[","").replaceAll("\\]", "").replaceAll("\"", ""));
+        map.put("pubdate", jsonObject.getJSONObject("attrs").getString("pubdate") //上映日期
+                .replaceAll("\\[","").replaceAll("\\]", "").replaceAll("\"", ""));
+        map.put("movie_duration", jsonObject.getJSONObject("attrs").getString("movie_duration") //片长
+                .replaceAll("\\[","").replaceAll("\\]", "").replaceAll("\"", ""));
+        map.put("movie_type", jsonObject.getJSONObject("attrs").getString("movie_type") //类型
+                .replaceAll("\\[","").replaceAll("\\]", "").replaceAll("\"", ""));
+        map.put("cast",jsonObject.getJSONObject("attrs").getString("cast") //主演
+                .replaceAll("\\[","").replaceAll("\\]", "").replaceAll("\"", "").replaceAll("\\,", "\n"));
+        map.put("average", jsonObject.getJSONObject("rating").getString("average")); //评分
+        map.put("numRaters",jsonObject.getJSONObject("rating").getString("numRaters")); //评价人数
+        map.put("image", jsonObject.getString("image")); //封面
+        map.put("summary", jsonObject.getString("summary")); //简介
+
+        return map;
+    }
+
+    public static String traverseArray(JSONArray array, String key) {
+        String str = "";
+        if(array.size() > 0) {
+            for(int i = 0; i < array.size(); i++) {
+                str += "\"" + array.getJSONObject(i).getString(key) + "\"";
+            }
+        }
+        return str;
     }
 }

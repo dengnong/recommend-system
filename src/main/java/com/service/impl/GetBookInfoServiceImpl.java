@@ -49,7 +49,7 @@ public class GetBookInfoServiceImpl implements GetBookInfoService {
         String strUrl = DouBanUrl + bookId;
         JSONObject jsonObject = null;
         jsonObject = getJsonByUrlService.getJsonByUrl(strUrl);
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
         map.put("title", jsonObject.getString("title")); //书名
         map.put("author", jsonObject.getString("author")); //作者
         map.put("publisher", jsonObject.getString("publisher")); //出版社
