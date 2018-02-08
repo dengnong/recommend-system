@@ -21,8 +21,8 @@
 
 </div>
 <script type="text/javascript">
-    //3秒钟之后跳转到指定的页面
-    setTimeout(window.location.href="/homepage",5);
+    //*秒钟之后跳转到指定的页面
+    setTimeout(window.location.href="/homepage",10);
 </script>
 </body>
 </html>

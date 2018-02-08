@@ -65,7 +65,7 @@
                                 </a>
                                 <img src="${movies.image}">
                             </div>
-                            <span><h3>${movies.movieName}</h3></span>
+                            <a href="/movie?id=${movies.movieId}" target="_Blank"><span><h3>${movies.movieName}</h3></span></a>
                         </div>
                         </c:forEach>
                     </div>
