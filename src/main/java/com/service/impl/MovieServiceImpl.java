@@ -38,4 +38,9 @@ public class MovieServiceImpl implements MovieService {
         Page<Movie> movies = movieRepository.findByKindAndOrderByRate(kind, pageable);
         return movies;
     }
+
+    public Page<Movie> findMovieByKey(String key, Pageable pageable) {
+        Page<Movie> movies = movieRepository.findMovieByKey(key, pageable);
+        return movies;
+    }
 }

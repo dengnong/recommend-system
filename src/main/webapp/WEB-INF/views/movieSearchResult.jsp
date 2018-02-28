@@ -13,7 +13,7 @@
 %>
 <html>
 <head>
-    <title>图书</title>
+    <title>电影搜索</title>
     <link href="../../statics/css/semantic.css" rel="stylesheet" type="text/css"/>
     <script src="../../statics/js/jquery-3.2.1.min.js"></script>
     <script src="../../statics/js/semantic.min.js"></script>
@@ -22,7 +22,7 @@
 <body>
 <%@ include file="headMenu.jsp"%>
 <div class="ui attached message" style="background-color: #F7F6EF">
-    <%@ include file="bookSearch.jsp"%>
+    <%@ include file="movieSearch.jsp"%>
 </div>
 
 <br>
@@ -31,28 +31,23 @@
         <div class="ui equal width stackable internally celled grid">
             <div class="row">
                 <div class="twelve wide column">
-                    <%-- 设置当前页的页码 --%>
-                    <c:set var="currentPageOffset" value="${bookLists.number + 1}"/>
                     <h5 class="ui horizontal divider header grey header">
                         本站结果
                     </h5>
                     <div class="ui divided items">
-                        <c:forEach items="${bookLists.content}" var="books">
+                        <c:forEach items="${movieLists.content}" var="movies">
                             <div class="item">
                                 <div class="ui tiny image">
-                                    <a href="${books.bookUrl}" target="view_window"><img src="${books.bookImg}"></a>
+                                    <a href="${movies.url}" target="view_window"><img src="${movies.image}"></a>
                                 </div>
                                 <div class="content">
-                                    <a href="/book?id=${books.bookId}" target="_Blank" class="header">${books.bookName}</a>
+                                    <a href="/movie?id=${movies.movieId}" target="_Blank" class="header">${movies.movieName}</a>
                                     <div class="meta">
-                                        <span>${books.bookAuthor}</span>
+                                        <p>类型：${movies.kind}</p>
                                     </div>
                                     <div class="description">
-                                        <p>${books.introduction}</p>
-                                    </div>
-                                    <div class="extra">
-                                        <span class="ui tiny orange header">${books.bookRate}</span>
-                                        <span>(${books.rateCount}人参与评价)</span>
+                                        <p>导演：${movies.director}</p>
+                                        <p>主演：${movies.actors}</p>
                                     </div>
                                 </div>
                             </div>
@@ -64,15 +59,15 @@
                         网络结果
                     </h5>
                     <div class="ui divided items">
-                        <c:forEach items="${doubanLists}" var="doubanBooks" begin="0" end="9">
+                        <c:forEach items="${doubanLists}" var="doubanMovies" begin="0" end="9">
                             <div class="item">
                                 <div class="content">
-                                    <a href="${doubanBooks.get("alt")}" target="_Blank" class="header">${doubanBooks.get("title")}</a>
+                                    <a href="${doubanMovies.get("alt")}" target="_Blank" class="header">${doubanMovies.get("title")}</a>
                                     <div class="meta">
-                                        <span>作者：${doubanBooks.get("author")}</span>
+                                        <span>导演：${doubanMovies.get("director")}</span>
                                     </div>
                                     <div class="description">
-                                        <p>出版：${doubanBooks.get("publisher")}</p>
+                                        <span>类型：${doubanMovies.get("genres")}</span>
                                     </div>
                                 </div>
                             </div>

@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.io.Serializable;
 
@@ -34,7 +35,11 @@ public interface MovieRepository extends JpaRepository<Movie, Serializable> {
     @Query(value = "SELECT * FROM movie WHERE kind = ?1 ORDER BY rate +0 DESC /*#pageable*/", nativeQuery = true)
     Page<Movie> findByKindAndOrderByRate(String kind, Pageable pageable);
 
-
+    /**
+     * 书籍名称模糊搜索
+     */
+    @Query(value = "SELECT * FROM movie WHERE name like CONCAT('%',:keyName,'%') GROUP BY movie_id /*#pageable*/", nativeQuery = true)
+    Page<Movie> findMovieByKey(@Param("keyName") String key, Pageable pageable);
 
 
 }

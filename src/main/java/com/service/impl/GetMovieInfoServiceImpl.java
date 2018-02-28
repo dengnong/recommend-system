@@ -25,6 +25,7 @@ public class GetMovieInfoServiceImpl implements GetMovieInfoService {
 
     private static final String doubanApiUrl = "https://api.douban.com/v2/movie/in_theaters";
     private static final String doubanUrl = "https://api.douban.com/v2/movie/";
+    private static final String douBanMovieSearchUrl = "https://api.douban.com/v2/movie/search?q=";
 
     /**
      * Time电影正在热映数据
@@ -188,6 +189,41 @@ public class GetMovieInfoServiceImpl implements GetMovieInfoService {
         map.put("summary", summary); //简介
 
         return map;
+    }
+
+    public ArrayList<Map<String, String>> searchDoubanMovie(String key) {
+        String strUrl = douBanMovieSearchUrl + key;
+        JSONObject jsonObject = null;
+        jsonObject = getJsonByUrlService.getJsonByUrl(strUrl);
+        ArrayList<Map<String, String>> list = new ArrayList<>();
+        JSONArray jsonArray = jsonObject.getJSONArray("subjects");
+        for(int i = 0; i < jsonArray.size(); i++) {
+            String title;
+            String genres;
+            String year;
+            String alt;
+            String director = "";
+            try {
+                title = jsonArray.getJSONObject(i).getString("title");
+                genres = jsonArray.getJSONObject(i).getString("genres");
+                year = jsonArray.getJSONObject(i).getString("year");
+                alt = jsonArray.getJSONObject(i).getString("alt");
+                JSONArray jsonArray1 = jsonArray.getJSONObject(i).getJSONArray("directors");
+                for(int j = 0; j < jsonArray1.size(); j++) {
+                    director = director + jsonArray1.getJSONObject(j).getString("name") + " ";
+                }
+            } catch (Exception e) {
+                continue;
+            }
+            Map<String, String> map = new HashMap<>();
+            map.put("title", title);
+            map.put("genres", genres);
+            map.put("year", year);
+            map.put("director", director);
+            map.put("alt", alt);
+            list.add(map);
+        }
+        return list;
     }
 
     public static String traverseArray(JSONArray array, String key) {

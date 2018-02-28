@@ -11,4 +11,6 @@ public interface GetMovieInfoService {
     ArrayList<Map<String, Object>> getTimeMoviesJson();
 
     Map<String, String> getDoubanMoviesJson(String movieId);
+
+    ArrayList<Map<String, String>> searchDoubanMovie(String key);
 }

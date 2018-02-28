@@ -13,7 +13,7 @@
 %>
 <html>
 <head>
-    <title>图书</title>
+    <title>图书搜索</title>
     <link href="../../statics/css/semantic.css" rel="stylesheet" type="text/css"/>
     <script src="../../statics/js/jquery-3.2.1.min.js"></script>
     <script src="../../statics/js/semantic.min.js"></script>
@@ -31,8 +31,6 @@
         <div class="ui equal width stackable internally celled grid">
             <div class="row">
                 <div class="twelve wide column">
-                    <%-- 设置当前页的页码 --%>
-                    <c:set var="currentPageOffset" value="${bookLists.number + 1}"/>
                     <h5 class="ui horizontal divider header grey header">
                         本站结果
                     </h5>

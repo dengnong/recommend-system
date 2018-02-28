@@ -32,4 +32,9 @@ public interface MovieService {
      * @return
      */
     Page<Movie> findByKindAndOrderByMovieRate(String kind, Pageable pageable);
+
+    /**
+     * 电影名称模糊搜索（数据库）
+     */
+    Page<Movie> findMovieByKey(String key, Pageable pageable);
 }

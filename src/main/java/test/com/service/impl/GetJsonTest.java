@@ -52,4 +52,17 @@ public class GetJsonTest {
             System.out.println("+++++++++" + i + "++++++++++");
         }
     }
+
+    @Test
+    public void searchDoubanMovie() {
+        ArrayList<Map<String, String>> list = new ArrayList<>();
+//        list = getMovieInfoService.searchDoubanMovie("西");
+        for(int i = 0; i <list.size(); i++) {
+            System.out.println(list.get(i).get("title"));
+            System.out.println(list.get(i).get("director"));
+            System.out.println(list.get(i).get("alt"));
+            System.out.println(list.get(i).get("genres"));
+            System.out.println("++++++++i++++++++");
+        }
+    }
 }

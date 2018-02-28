@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.util.Scanner;
 
 /**
@@ -28,6 +29,7 @@ public class GetJsonByUrlServiceImpl implements GetJsonByUrlService {
         HttpURLConnection conn;
         JSONObject jsonObject = null;
         try {
+            urlTemp = URLDecoder.decode(urlTemp, "UTF-8");
             url = new URL(urlTemp);
             conn = (HttpURLConnection) url.openConnection();
             input = new InputStreamReader(conn.getInputStream(), "utf-8");

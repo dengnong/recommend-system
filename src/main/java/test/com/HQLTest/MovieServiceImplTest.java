@@ -72,4 +72,13 @@ public class MovieServiceImplTest {
             System.out.println(list.getContent().get(i).getMovieName());
         }
     }
+
+    @Test
+    public void findMovieByKey() {
+        Pageable pageable = new PageRequest(0, 10);
+        Page<Movie> movies = movieRepository.findMovieByKey("西", pageable);
+        for (int i = 0; i < movies.getTotalElements(); i++) {
+            System.out.println(movies.getContent().get(i).getMovieName());
+        }
+    }
 }

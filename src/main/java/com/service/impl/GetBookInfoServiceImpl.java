@@ -23,7 +23,7 @@ public class GetBookInfoServiceImpl implements GetBookInfoService {
     private static final String DouBanUrl = "https://api.douban.com//v2/book/";
     private static final String JuheUrl = "http://apis.juhe.cn/goodbook/query";
     private static final String JuheKey = "e191d9d8436c7ac323341936f2ef975b";
-    private static final String DouBanBookSearchUrl = "https://api.douban.com/v2/book/search?q=";
+    private static final String douBanBookSearchUrl = "https://api.douban.com/v2/book/search?q=";
 
     /**
      * Gets juhe books json.
@@ -73,18 +73,16 @@ public class GetBookInfoServiceImpl implements GetBookInfoService {
      * 搜索豆瓣书籍
      */
     public ArrayList<Map<String, String>> searchDoubanBook(String key) {
-        String strUrl = DouBanBookSearchUrl + key;
+        String strUrl = douBanBookSearchUrl + key;
         JSONObject jsonObject = null;
         jsonObject = getJsonByUrlService.getJsonByUrl(strUrl);
         ArrayList<Map<String, String>> list = new ArrayList<>();
-
-        String title;
-        String author;
-        String publisher;
-        String alt;
-
         JSONArray jsonArray = jsonObject.getJSONArray("books");
         for(int i = 0; i < jsonArray.size(); i++) {
+            String title;
+            String author;
+            String publisher;
+            String alt;
             try {
                 title = jsonArray.getJSONObject(i).getString("title");
                 author = jsonArray.getJSONObject(i).getString("author")
