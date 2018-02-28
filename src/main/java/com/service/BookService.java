@@ -54,4 +54,9 @@ public interface BookService  {
      * @return
      */
     Page<Book> findByKindAndOrderByRateCount(String kind, Pageable pageable);
+
+    /**
+     * 书籍名称模糊搜索（数据库）
+     */
+    Page<Book> findBookByKey(String key, Pageable pageable);
 }

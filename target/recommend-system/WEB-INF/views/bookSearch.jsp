@@ -12,6 +12,7 @@
     <link href="../../statics/css/semantic.css" rel="stylesheet" type="text/css"/>
     <script src="../../statics/js/jquery-3.2.1.min.js"></script>
     <script src="../../statics/js/semantic.min.js"></script>
+    <script src="../../statics/js/bookSearch.js"></script>
 </head>
 
 <body>
@@ -23,8 +24,8 @@
             </div>
             <div class="eight wide column">
                 <div class="ui mini fluid action input">
-                    <input type="text" placeholder="搜索...">
-                    <button class="ui icon button">
+                    <input id="searchKey" type="text" placeholder="搜索..." HaoyuSug='5D250FD908CB41D2AA3729AF788BFF1B'>
+                    <button class="ui icon button" onclick="bookSearch()">
                         <i class="search icon"></i>
                     </button>
                 </div>
@@ -36,4 +37,5 @@
     </div>
 </div>
 </body>
+<script charset="UTF-8" src="http://www.92find.com/inteltip.js"></script>
 </html>

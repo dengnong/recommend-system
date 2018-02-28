@@ -169,6 +169,16 @@
       <artifactId>spring-test</artifactId>
       <version>4.3.12.RELEASE</version>
     </dependency>
+      <dependency>
+          <groupId>org.elasticsearch</groupId>
+          <artifactId>elasticsearch</artifactId>
+          <version>5.2.2</version>
+      </dependency>
+    <dependency>
+      <groupId>org.elasticsearch.client</groupId>
+      <artifactId>transport</artifactId>
+      <version>5.2.2</version>
+    </dependency>
 
   </dependencies>
 
@@ -275,6 +285,20 @@
         <version>1.7.21</version>
       </dependency>
       <!-- log -->
+
+      <!-- ES -->
+      <dependency>
+        <groupId>org.elasticsearch.client</groupId>
+        <artifactId>transport</artifactId>
+        <version>5.2.2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.elasticsearch</groupId>
+        <artifactId>elasticsearch</artifactId>
+        <version>5.2.2</version>
+      </dependency>
+
+
 
       <!-- dao -->
       <dependency>

@@ -103,27 +103,89 @@ public class GetMovieInfoServiceImpl implements GetMovieInfoService {
         String strUrl = doubanUrl + movieId;
         JSONObject jsonObject = null;
         jsonObject = getJsonByUrlService.getJsonByUrl(strUrl);
+        String writer,alt_title,director,country,pubdate,movie_duration,
+                movie_type,cast,average,numRaters,image,summary;
+        try {
+            alt_title = jsonObject.getString("alt_title");
+        } catch (Exception e) {
+            alt_title = "";
+        }
+        try {
+            writer = jsonObject.getJSONObject("attrs").getString("writer");
+        } catch (Exception e) {
+            writer = "";
+        }
+        try {
+            director = jsonObject.getJSONObject("attrs").getString("director");
+        } catch (Exception e) {
+            director = "";
+        }
+        try {
+            country = jsonObject.getJSONObject("attrs").getString("country");
+        } catch (Exception e) {
+            country = "";
+        }
+        try {
+            pubdate = jsonObject.getJSONObject("attrs").getString("pubdate");
+        } catch (Exception e) {
+            pubdate = "";
+        }
+        try {
+            movie_duration = jsonObject.getJSONObject("attrs").getString("movie_duration");
+        } catch (Exception e) {
+            movie_duration = "";
+        }
+        try {
+            movie_type = jsonObject.getJSONObject("attrs").getString("movie_type");
+        } catch (Exception e) {
+            movie_type = "";
+        }
+        try {
+            cast = jsonObject.getJSONObject("attrs").getString("cast");
+        } catch (Exception e) {
+            cast = "";
+        }
+        try {
+            average = jsonObject.getJSONObject("rating").getString("average");
+        } catch (Exception e) {
+            average = "";
+        }
+        try {
+            numRaters = jsonObject.getJSONObject("rating").getString("numRaters");;
+        } catch (Exception e) {
+            numRaters = "";
+        }
+        try {
+            image = jsonObject.getString("image");
+        } catch (Exception e) {
+            image = "#";
+        }
+        try {
+            summary = jsonObject.getString("summary");
+        } catch (Exception e) {
+            summary = "";
+        }
 
         Map<String, String> map = new HashMap<>();
-        map.put("alt_title", jsonObject.getString("alt_title")); //电影标题
-        map.put("writer", jsonObject.getJSONObject("attrs").getString("writer") //编剧
+        map.put("alt_title", alt_title); //电影标题
+        map.put("writer", writer //编剧
                 .replaceAll("\\[","").replaceAll("\\]", "").replaceAll("\"", ""));
-        map.put("director", jsonObject.getJSONObject("attrs").getString("director") //导演
+        map.put("director", director //导演
                 .replaceAll("\\[","").replaceAll("\\]", "").replaceAll("\"", ""));
-        map.put("country", jsonObject.getJSONObject("attrs").getString("country") //国家
+        map.put("country", country //国家
                 .replaceAll("\\[","").replaceAll("\\]", "").replaceAll("\"", ""));
-        map.put("pubdate", jsonObject.getJSONObject("attrs").getString("pubdate") //上映日期
+        map.put("pubdate", pubdate //上映日期
                 .replaceAll("\\[","").replaceAll("\\]", "").replaceAll("\"", ""));
-        map.put("movie_duration", jsonObject.getJSONObject("attrs").getString("movie_duration") //片长
+        map.put("movie_duration", movie_duration //片长
                 .replaceAll("\\[","").replaceAll("\\]", "").replaceAll("\"", ""));
-        map.put("movie_type", jsonObject.getJSONObject("attrs").getString("movie_type") //类型
+        map.put("movie_type", movie_type //类型
                 .replaceAll("\\[","").replaceAll("\\]", "").replaceAll("\"", ""));
-        map.put("cast",jsonObject.getJSONObject("attrs").getString("cast") //主演
+        map.put("cast", cast //主演
                 .replaceAll("\\[","").replaceAll("\\]", "").replaceAll("\"", "").replaceAll("\\,", "\n"));
-        map.put("average", jsonObject.getJSONObject("rating").getString("average")); //评分
-        map.put("numRaters",jsonObject.getJSONObject("rating").getString("numRaters")); //评价人数
-        map.put("image", jsonObject.getString("image")); //封面
-        map.put("summary", jsonObject.getString("summary")); //简介
+        map.put("average", average); //评分
+        map.put("numRaters",numRaters); //评价人数
+        map.put("image", image); //封面
+        map.put("summary", summary); //简介
 
         return map;
     }

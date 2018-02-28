@@ -85,4 +85,13 @@ public class BookServiceImplTest {
             System.out.println(books.getContent().get(i).getKind());
         }
     }
+
+    @Test
+    public void findBookByKey() {
+        Pageable pageable = new PageRequest(0, 10);
+        Page<Book> books = bookRepository.findBookByKey("白夜", pageable);
+        for (int i = 0; i < books.getTotalElements(); i++) {
+            System.out.println(books.getContent().get(i).getBookName());
+        }
+    }
 }

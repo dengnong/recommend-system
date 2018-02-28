@@ -58,4 +58,8 @@ public class BookServiceImpl implements BookService {
         return books;
     }
 
+    public Page<Book> findBookByKey(String key, Pageable pageable) {
+        Page<Book> books = bookRepository.findBookByKey(key, pageable);
+        return books;
+    }
 }

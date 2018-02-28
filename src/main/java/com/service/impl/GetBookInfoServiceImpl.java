@@ -7,6 +7,7 @@ import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,6 +23,7 @@ public class GetBookInfoServiceImpl implements GetBookInfoService {
     private static final String DouBanUrl = "https://api.douban.com//v2/book/";
     private static final String JuheUrl = "http://apis.juhe.cn/goodbook/query";
     private static final String JuheKey = "e191d9d8436c7ac323341936f2ef975b";
+    private static final String DouBanBookSearchUrl = "https://api.douban.com/v2/book/search?q=";
 
     /**
      * Gets juhe books json.
@@ -65,5 +67,42 @@ public class GetBookInfoServiceImpl implements GetBookInfoService {
         map.put("image", jsonObject.getJSONObject("images").getString("large")); //图片
 
         return map;
+    }
+
+    /**
+     * 搜索豆瓣书籍
+     */
+    public ArrayList<Map<String, String>> searchDoubanBook(String key) {
+        String strUrl = DouBanBookSearchUrl + key;
+        JSONObject jsonObject = null;
+        jsonObject = getJsonByUrlService.getJsonByUrl(strUrl);
+        ArrayList<Map<String, String>> list = new ArrayList<>();
+
+        String title;
+        String author;
+        String publisher;
+        String alt;
+
+        JSONArray jsonArray = jsonObject.getJSONArray("books");
+        for(int i = 0; i < jsonArray.size(); i++) {
+            try {
+                title = jsonArray.getJSONObject(i).getString("title");
+                author = jsonArray.getJSONObject(i).getString("author")
+                        .replaceAll("\\[", "")
+                        .replaceAll("\\]", "")
+                        .replaceAll("\"","");
+                publisher = jsonArray.getJSONObject(i).getString("publisher");
+                alt = jsonArray.getJSONObject(i).getString("alt");
+            } catch (Exception e) {
+                continue;
+            }
+            Map<String, String> map = new HashMap<>();
+            map.put("title", title);
+            map.put("author", author);
+            map.put("publisher", publisher);
+            map.put("alt", alt);
+            list.add(map);
+        }
+        return list;
     }
 }

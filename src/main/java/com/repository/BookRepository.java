@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.io.Serializable;
 import java.util.List;
@@ -54,4 +55,10 @@ public interface BookRepository extends JpaRepository<Book, Serializable> {
      */
     @Query(value = "SELECT * FROM book WHERE kind = ?1 ORDER BY rate_count +0 DESC /*#pageable*/", nativeQuery = true)
     Page<Book> findByKindAndOrderByRateCount(String kind, Pageable pageable);
+
+    /**
+     * 书籍名称模糊搜索
+     */
+    @Query(value = "SELECT * FROM book WHERE name like CONCAT('%',:keyName,'%') GROUP BY author /*#pageable*/", nativeQuery = true)
+    Page<Book> findBookByKey(@Param("keyName") String key, Pageable pageable);
 }

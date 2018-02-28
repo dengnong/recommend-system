@@ -1,5 +1,6 @@
 package com.service;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -19,4 +20,9 @@ public interface GetBookInfoService {
      * @return
      */
     Map<String, String> getDoubanBooksJson(String bookId);
+
+    /**
+     * 关键字搜索豆瓣书籍
+     */
+    ArrayList<Map<String, String>> searchDoubanBook(String key);
 }
