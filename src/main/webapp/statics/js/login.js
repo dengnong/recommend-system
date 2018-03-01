@@ -110,7 +110,8 @@ function submitLoginForm() {
         dataType: 'json',
         success:function(data) {
             if(data.success == 1) {
-                window.top.location = "/homepage";
+                // window.top.location = "/homepage";
+                self.location=document.referrer;
             } else if(data.success == 0){
                 alert("请检查您的账号与密码");
             } else {
@@ -121,7 +122,7 @@ function submitLoginForm() {
         {
             alert("服务器无响应");
         },
-    })
+    });
     return false;
 }
 

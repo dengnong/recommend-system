@@ -11,14 +11,13 @@
 <head>
     <title></title>
     <link href="../../statics/css/semantic.css" rel="stylesheet" type="text/css"/>
-    <script src="../../statics/js/jquery-3.2.1.min.js"></script>
+    <script src="/statics/js/jquery-3.2.1.min.js"></script>
     <script src="../../statics/js/semantic.min.js"></script>
-
 </head>
 
 <body>
 <div class="ui mini attached inverted menu" style="background-color: #515151">
-    <a class="item">
+    <a class="item" href="/homepage">
         首页
     </a>
     <a class="item">
@@ -46,7 +45,7 @@
                 <div class="ui dropdown item">
                     ${sessionScope.userInfo}
                     <div class="menu">
-                        <div class="item">注销登录</div>
+                        <a href="/logout" class="item">注销登录</a>
                     </div>
                 </div>
             </c:when>
@@ -60,7 +59,7 @@
                 <a class="item">
                     食谱
                 </a>
-                <a class="item">
+                <a class="item" href="/login">
                     亲，请登录
                 </a>
             </c:otherwise>

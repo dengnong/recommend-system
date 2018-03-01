@@ -74,7 +74,7 @@
                             <div class="divider"></div>
                             <div class="item">
                                 <i class="sign out icon"></i>
-                                登出
+                                <a href="/logout">登出</a>
                             </div>
                         </div>
                     </div>
