@@ -1,12 +1,14 @@
 package com.controller;
 
 import com.service.GetMovieInfoService;
+import com.service.MarksService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 /**
@@ -18,8 +20,11 @@ public class MovieInfoController {
     @Resource(name = "getMovieInfoServiceImpl")
     private GetMovieInfoService getMovieInfoService;
 
+    @Resource(name = "marksServiceImpl")
+    private MarksService marksService;
+
     @RequestMapping("/movie")
-    public String movieInfo(@RequestParam("id") String movieId, Model model) {
+    public String movieInfo(@RequestParam("id") String movieId, Model model, HttpSession httpSession) {
         Map<String, String> map;
         try {
             map = getMovieInfoService.getDoubanMoviesJson(movieId);
@@ -27,6 +32,14 @@ public class MovieInfoController {
             return "404";
         }
 
+        if(httpSession.getAttribute("userInfo") != null) {
+            String userId = (String) httpSession.getAttribute("userInfo");
+            model.addAttribute("marks", marksService.markInit(userId, movieId, "movie"));
+        } else {
+            model.addAttribute("marks", false);
+        }
+
+        model.addAttribute("movieId", movieId);
         model.addAttribute("movieInfo", map);
         return "movieInfo";
     }

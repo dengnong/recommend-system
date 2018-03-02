@@ -13,6 +13,7 @@
     <link href="../../statics/css/semantic.css" rel="stylesheet" type="text/css"/>
     <script src="../../statics/js/jquery-3.2.1.min.js"></script>
     <script src="../../statics/js/semantic.min.js"></script>
+    <script src="../../statics/js/mark.js"></script>
 </head>
 
 <body>
@@ -56,6 +57,16 @@
                                 </div>
                                 <div class="label">
                                     <span style="color: #6E7176">评价人数</span>
+                                </div>
+                                <%-- 收藏标记 --%>
+                                <br><br>
+                                <input type="hidden" id="markInit" name="markInit" value="${marks}">
+                                <input type="hidden" id="type" name="type" value="movie">
+                                <input type="hidden" id="itemId" name="movieId" value="${movieId}">
+                                <input type="hidden" id="userInfo" name="userInfo" value="${sessionScope.get("userInfo")}">
+                                <div class="ui massive heart rating" id="markTag" data-max-rating="1" onclick="markChange();"></div>
+                                <div class="label">
+                                    <span style="color: #6E7176">like</span>
                                 </div>
                             </div>
                         </div>
@@ -124,6 +135,39 @@
     $('.ui.accordion')
         .accordion()
     ;
+</script>
+
+<script>
+    var init = 0;
+    var flag = $('#markInit').val();
+    if(flag === "true") {
+        init = 1;
+        $('#markTag')
+            .rating({
+                initialRating: 1,
+                maxRating: 1
+            })
+        ;
+    } else {
+        $('#markTag')
+            .rating({
+                initialRating: 0,
+                maxRating: 1
+            })
+        ;
+    }
+</script>
+
+<script>
+    function markChange() {
+        if(init === 1) {
+            mark(init);
+            init = 0;
+        } else {
+            mark(init);
+            init = 1;
+        }
+    }
 </script>
 
 </body>

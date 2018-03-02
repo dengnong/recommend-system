@@ -38,7 +38,7 @@ public class BookInfoController {
         if(httpSession.getAttribute("userInfo") != null) {
             String userId = (String) httpSession.getAttribute("userInfo");
             model.addAttribute("marks", marksService.markInit(userId, bookId, "book"));
-            System.out.println(userId + " " + marksService.markInit(userId, bookId, "book"));
+//            System.out.println(userId + " " + marksService.markInit(userId, bookId, "book"));
         } else {
             model.addAttribute("marks", false);
         }
