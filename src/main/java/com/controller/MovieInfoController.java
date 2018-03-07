@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.service.CommentService;
 import com.service.GetMovieInfoService;
 import com.service.MarksService;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,9 @@ public class MovieInfoController {
     @Resource(name = "marksServiceImpl")
     private MarksService marksService;
 
+    @Resource(name = "commentServiceImpl")
+    private CommentService commentService;
+
     @RequestMapping("/movie")
     public String movieInfo(@RequestParam("id") String movieId, Model model, HttpSession httpSession) {
         Map<String, String> map;
@@ -41,6 +45,7 @@ public class MovieInfoController {
 
         model.addAttribute("movieId", movieId);
         model.addAttribute("movieInfo", map);
+        model.addAttribute("comment", commentService.findComment(movieId, "movie"));
         return "movieInfo";
     }
 }

@@ -37,6 +37,7 @@ function mark(init) {
         window.top.location = "/login";
         return false;
     }
+    return false;
 }
 
 function active() {

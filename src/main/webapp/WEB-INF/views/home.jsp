@@ -182,7 +182,8 @@
                             <a href="/movies?kind=全部&page=1&sort=defalut" target="_Blank" style="text-align:center">
                                 <i class="add icon"></i>
                                 点击查看更多电影
-                            </a>                        </div>
+                            </a>
+                        </div>
                     </div>
                     <div class="column">
                         <p>热门搜索</p>
