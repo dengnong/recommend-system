@@ -19,7 +19,7 @@
     <div class="ui stackable inverted divided equal height stackable grid">
         <div class="center aligned row">
             <div class="four wide column">
-                <h1 class="ui red header"><span><i class="icon food"></i>美味</span></h1>
+                <h1 class="ui teal header"><span><i class="icon food"></i>美味</span></h1>
             </div>
             <div class="eight wide column">
                 <div class="ui mini fluid action input">
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="four wide column">
-                <h4 class="ui header">页脚</h4>
+                <h1 class="ui header"><img src="/statics/image/welcome.png"></h1>
             </div>
         </div>
     </div>

@@ -59,23 +59,23 @@
                     <div class="circular ui right pointing icon dropdown button">
                         <i class="icon heart"></i>
                         <div class="menu">
-                            <div class="item">
+                            <a class="item" href="/bookShelf">
                                 <div class="ui red empty circular label"></div>
                                 书架
-                            </div>
-                            <div class="item">
+                            </a>
+                            <a class="item">
                                 <div class="ui blue empty circular label"></div>
                                 影墙
-                            </div>
-                            <div class="item">
+                            </a>
+                            <a class="item">
                                 <div class="ui yellow empty circular label"></div>
                                 食谱
-                            </div>
+                            </a>
                             <div class="divider"></div>
-                            <div class="item">
+                            <a class="item" href="/logout">
                                 <i class="sign out icon"></i>
-                                <a href="/logout">登出</a>
-                            </div>
+                                登出
+                            </a>
                         </div>
                     </div>
                 </div>

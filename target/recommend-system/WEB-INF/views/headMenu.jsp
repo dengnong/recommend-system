@@ -20,10 +20,10 @@
     <a class="item" href="/homepage">
         首页
     </a>
-    <a class="item">
+    <a class="item" href="/books?kind=全部&page=1&sort=defalut">
         图书
     </a>
-    <a class="item">
+    <a class="item" href="/movies?kind=全部&page=1&sort=defalut">
         电影
     </a>
     <a class="item">
@@ -32,7 +32,7 @@
     <div class="right menu">
         <c:choose>
             <c:when test="${!empty sessionScope.userInfo}">
-                <a class="item">
+                <a class="item"  href="/bookShelf">
                     书架
                 </a>
                 <a class="item">

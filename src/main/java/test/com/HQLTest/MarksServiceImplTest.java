@@ -46,4 +46,8 @@ public class MarksServiceImplTest {
         marksService.markCancel("1", "11", "book");
     }
 
+    @Test
+    public void marksBook() {
+        System.out.println(marksRepository.marksBook("account"));
+    }
 }

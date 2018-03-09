@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="four wide column">
-                <h4 class="ui header">页脚</h4>
+                <h1 class="ui header"><img src="/statics/image/welcome.png"></h1>
             </div>
         </div>
     </div>

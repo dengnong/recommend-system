@@ -13,7 +13,7 @@
 %>
 <html>
 <head>
-    <title></title>
+    <title>美食烹饪</title>
     <link href="../../statics/css/semantic.css" rel="stylesheet" type="text/css"/>
     <script src="../../statics/js/jquery-3.2.1.min.js"></script>
     <script src="../../statics/js/semantic.min.js"></script>
@@ -21,7 +21,7 @@
 
 <body>
 <%@ include file="headMenu.jsp"%>
-<div class="ui attached message" style="background-color: #fdf6f4">
+<div class="ui attached message" style="background-color: #EDF4EB">
     <%@ include file="foodSearch.jsp"%>
 </div>
 
@@ -136,7 +136,7 @@
                                 </div>
                                 <a class="ui slide masked reveal image" href="#">
                                     <div class="visible content">
-                                        <div style="background-color: #fdf6f4">
+                                        <div style="background-color: #F3F2F0">
                                             <h3>五香牛肉</h3>
                                             <p>人气：999</p>
                                         </div>
