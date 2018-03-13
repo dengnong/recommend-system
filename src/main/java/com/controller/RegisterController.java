@@ -42,10 +42,11 @@ public class RegisterController {
     public Object registerUser(@RequestBody Map<String, String> map, Model model) {
         String account = map.get("account");
         String password = characterTransformService.encrypt(map.get("password"));
+        String taste = map.get("taste");
         if(userService.initUserExist(account)) {
             return ResultMsg.exist();
         } else {
-            User user = new User(account, password, LocalDateTime.now(), true);
+            User user = new User(account, password, LocalDateTime.now(), true, taste);
             userRepository.save(user);
             model.addAttribute("userInfo", account);
             return ResultMsg.success();

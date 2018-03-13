@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,5 +62,18 @@ public class BookServiceImpl implements BookService {
     public Page<Book> findBookByKey(String key, Pageable pageable) {
         Page<Book> books = bookRepository.findBookByKey(key, pageable);
         return books;
+    }
+
+    public ArrayList<String> bookRandom() {
+        ArrayList<String> books = bookRepository.randBooks();
+        return books;
+    }
+
+    public List<Book> findBookById(List<String> list) {
+        ArrayList<Book> arrayList = new ArrayList<>();
+        for(int i = 0; i < 5; i ++) {
+            arrayList.add(bookRepository.findBookByBookId(list.get(i)));
+        }
+        return arrayList;
     }
 }

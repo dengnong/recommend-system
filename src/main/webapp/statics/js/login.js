@@ -1,6 +1,8 @@
 /**
  * Created by 54472 on 2017/12/20.
  */
+document.write("<script language=javascript src='../js/jquery-3.2.1.min.js'></script>");
+
 //登录表单校验
 function submit(){
     $('#form').form({
@@ -70,13 +72,15 @@ function regSubmit(){
 function submitForm() {
     var account = $("#regAccount").val();
     var password = $("#regPassword").val();
+    var selection = $('#selection').dropdown('get value').toString();
     $.ajax({
         type: "POST",
         url: "/userRegister",
         headers: {'Content-type': 'application/json'},
         data:JSON.stringify( {
             "account":account,
-            "password":password
+            "password":password,
+            "taste":selection
         }),
         dataType: 'json',
         success:function(data){
@@ -95,7 +99,7 @@ function submitForm() {
     });
     return false;
 }
-
+//登陆信息提交
 function submitLoginForm() {
     var account = $("#account").val();
     var password = $("#password").val();
@@ -139,4 +143,6 @@ function cancel(){
     ;
 }
 
-
+function getContext() {
+    alert();
+}

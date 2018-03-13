@@ -50,4 +50,19 @@ public class MarksServiceImplTest {
     public void marksBook() {
         System.out.println(marksRepository.marksBook("account"));
     }
+
+    @Test
+    public void countUser() {
+        System.out.println(marksRepository.countUserId());
+    }
+
+    @Test
+    public void findUserId() {
+        System.out.println(marksRepository.findUserId().get(1));
+    }
+
+    @Test
+    public void findItemIdByUserId() {
+        System.out.println(marksRepository.findItemIdByUserId("account").get(1));
+    }
 }

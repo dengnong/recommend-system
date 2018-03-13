@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +19,10 @@ public interface BookRepository extends JpaRepository<Book, Serializable> {
     @Query(value = "SELECT * FROM book  WHERE id >= round(((SELECT MAX(id) FROM book ))" +
             " * RAND()*100) LIMIT 5", nativeQuery = true)
     List<Book> findRandBooks();
+
+    @Query(value = "SELECT book_id FROM book  WHERE id >= round(((SELECT MAX(id) FROM book ))" +
+            " * RAND()*100) LIMIT 5", nativeQuery = true)
+    ArrayList<String> randBooks();
 
     /**
      * 按分类搜索图书
@@ -61,4 +66,7 @@ public interface BookRepository extends JpaRepository<Book, Serializable> {
      */
     @Query(value = "SELECT * FROM book WHERE name like CONCAT('%',:keyName,'%') GROUP BY author /*#pageable*/", nativeQuery = true)
     Page<Book> findBookByKey(@Param("keyName") String key, Pageable pageable);
+
+    @Query(value = "SELECT * FROM book WHERE book_id = ?1 GROUP BY author", nativeQuery = true)
+    Book findBookByBookId(String bookId);
 }

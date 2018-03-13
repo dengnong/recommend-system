@@ -101,15 +101,15 @@
                     </div>
                     <br>
                     <div class="ui five column grid">
-                        <c:forEach begin="1" end="5">
+                        <c:forEach items="${recommendBook}" var="recommendBooks">
                             <div class="column">
                                 <div class="ui small image">
-                                    <img src="${bookInfo.get("image")}">
+                                    <img class="ui centered image" src="${recommendBooks.bookImg}">
                                 </div>
                                 <br>
                                 <div style="text-align:center">
-                                    <a href="#">
-                                        <h3>book's name</h3>
+                                    <a href="/book?id=${recommendBooks.bookId}" target="_Blank">
+                                        <h4>${recommendBooks.bookName}</h4>
                                     </a>
                                 </div>
                             </div>

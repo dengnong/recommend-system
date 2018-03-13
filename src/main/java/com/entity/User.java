@@ -30,6 +30,9 @@ public class User implements Serializable {
     @Column(name = "valid")
     private boolean valid = true;
 
+    @Column(name = "taste")
+    private String taste;
+
     public User() {
 
     }
@@ -39,6 +42,14 @@ public class User implements Serializable {
         this.password = password;
         this.createTime = createTime;
         this.valid = valid;
+    }
+
+    public User(String username, String password, LocalDateTime createTime, boolean valid, String taste) {
+        this.username = username;
+        this.password = password;
+        this.createTime = createTime;
+        this.valid = valid;
+        this.taste = taste;
     }
 
     public int getId() {
@@ -75,5 +86,13 @@ public class User implements Serializable {
 
     public void setValid(boolean valid) {
         this.valid = valid;
+    }
+
+    public String getTaste() {
+        return taste;
+    }
+
+    public void setTaste(String taste) {
+        this.taste = taste;
     }
 }

@@ -134,7 +134,7 @@
                             What's your interested in?
                         </div>
                         <div class="ui segment">
-                            <select class="ui fluid search dropdown" multiple="">
+                            <select class="ui fluid search dropdown" multiple="" id="selection">
                                 <option value="动作">动作</option>
                                 <option value="喜剧">喜剧</option>
                                 <option value="青春">青春</option>
@@ -159,6 +159,10 @@
     $('.ui.dropdown')
         .dropdown()
     ;
+</script>
+
+<script>
+
 </script>
 
 </body>

@@ -4,6 +4,7 @@ import com.entity.Book;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -59,4 +60,8 @@ public interface BookService  {
      * 书籍名称模糊搜索（数据库）
      */
     Page<Book> findBookByKey(String key, Pageable pageable);
+
+    ArrayList<String> bookRandom();
+
+    List<Book> findBookById(List<String> list);
 }

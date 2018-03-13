@@ -94,4 +94,14 @@ public class BookServiceImplTest {
             System.out.println(books.getContent().get(i).getBookName());
         }
     }
+
+    @Test
+    public void randomBook() {
+        System.out.println(bookService.bookRandom().toString());
+    }
+
+    @Test
+    public void findBookById() {
+        System.out.println(bookRepository.findBookByBookId("3259440").getBookName());
+    }
 }
