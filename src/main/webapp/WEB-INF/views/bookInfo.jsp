@@ -14,6 +14,7 @@
     <script src="../../statics/js/jquery-3.2.1.min.js"></script>
     <script src="../../statics/js/semantic.min.js"></script>
     <script src="../../statics/js/mark.js"></script>
+    <script src="../../statics/js/comment.js"></script>
 </head>
 
 <body>
@@ -116,6 +117,46 @@
                         </c:forEach>
                     </div>
 
+                    <br>
+                    <div class="ui horizontal divider">
+                        <span style="color: #6E7176">用户评论</span>
+                    </div>
+                    <div class="ui divided items">
+                        <c:forEach items="${comment}" var="comments">
+                            <div class="item">
+                                <div class="content">
+                                    <div class="meta">
+                                        <span>${comments.userId} </span>
+                                        <span>
+                                            <div class="ui star rating disabled" id="commentRating"
+                                                 data-rating=${comments.score}
+                                                         data-max-rating="5">
+                                            </div>
+                                        </span>
+                                    </div>
+                                    <div class="description">
+                                        <span>${comments.content}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                    <br>
+                    <div class="ui reply form">
+                        <div class="field">
+                            <textarea id="content" name="content"></textarea>
+                        </div>
+                        <span>为它打分：</span>
+                        <div class="ui star rating"
+                             data-rating="3"
+                             data-max-rating="5" id="rating" name="rating">
+                        </div>
+                        &emsp;
+                        <div class="ui primary submit labeled icon button" onclick="submitComment()">
+                            <i class="icon edit"></i> Add Comment
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="column">
@@ -169,6 +210,17 @@
             init = 1;
         }
     }
+</script>
+
+<script>
+    $('.ui.rating')
+        .rating('disable')
+    ;
+</script>
+
+<script>
+    $('#rating')
+        .rating('enable')
 </script>
 
 </body>

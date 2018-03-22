@@ -76,8 +76,13 @@ public class GetBookInfoServiceImpl implements GetBookInfoService {
         String strUrl = douBanBookSearchUrl + key;
         JSONObject jsonObject = null;
         jsonObject = getJsonByUrlService.getJsonByUrl(strUrl);
+        JSONArray jsonArray = null;
         ArrayList<Map<String, String>> list = new ArrayList<>();
-        JSONArray jsonArray = jsonObject.getJSONArray("books");
+        try {
+            jsonArray = jsonObject.getJSONArray("books");
+        } catch(Exception e) {
+            return null;
+        }
         for(int i = 0; i < jsonArray.size(); i++) {
             String title;
             String author;

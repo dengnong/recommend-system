@@ -1,10 +1,7 @@
 package com.controller;
 
 import com.entity.Book;
-import com.service.BookService;
-import com.service.GetBookInfoService;
-import com.service.MarksService;
-import com.service.UserCFService;
+import com.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +33,9 @@ public class BookInfoController {
     @Resource(name = "bookServiceImpl")
     private BookService bookService;
 
+    @Resource(name = "commentServiceImpl")
+    private CommentService commentService;
+
     @RequestMapping("/book")
     public String bookInfo(@RequestParam("id") String bookId, Model model, HttpSession httpSession) {
         Map<String, String> map;
@@ -61,6 +61,7 @@ public class BookInfoController {
         model.addAttribute("recommendBook", list2);
         model.addAttribute("bookInfo", map);
         model.addAttribute("bookId", bookId);
+        model.addAttribute("comment", commentService.findComment(bookId, "book"));
         return "bookInfo";
     }
 }

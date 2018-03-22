@@ -4,6 +4,10 @@
 document.write("<script language=javascript src='../js/jquery-3.2.1.min.js'></script>");
 function bookSearch() {
     var key = $("#searchKey").val().trim();
-    window.top.location = "/bookSearch?key=" + key;
+    if(key === "" || key === undefined || key === null) {
+        return false;
+    } else {
+        window.top.location = "/bookSearch?key=" + key;
+    }
     return false;
 }

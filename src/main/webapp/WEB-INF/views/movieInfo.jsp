@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title></title>
+    <title>${movieInfo.get("alt_title")}</title>
     <link href="../../statics/css/semantic.css" rel="stylesheet" type="text/css"/>
     <script src="../../statics/js/jquery-3.2.1.min.js"></script>
     <script src="../../statics/js/semantic.min.js"></script>
@@ -213,8 +213,13 @@
 
 <script>
     $('.ui.rating')
-        .rating()
+        .rating('disable')
     ;
+</script>
+
+<script>
+    $('#rating')
+        .rating('enable')
 </script>
 
 </body>
