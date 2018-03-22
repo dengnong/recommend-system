@@ -7,7 +7,9 @@ import java.util.List;
  */
 public interface UserCFService {
 
-    List userCf(String account);
+    List userCf(String account, String type);
 
     List userCf();
+
+    List userCF2();
 }

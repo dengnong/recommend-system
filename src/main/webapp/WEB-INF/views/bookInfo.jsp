@@ -128,7 +128,7 @@
                                     <div class="meta">
                                         <span>${comments.userId} </span>
                                         <span>
-                                            <div class="ui star rating disabled" id="commentRating"
+                                            <div class="ui star rating disabled" id="rated"
                                                  data-rating=${comments.score}
                                                          data-max-rating="5">
                                             </div>
@@ -147,7 +147,7 @@
                             <textarea id="content" name="content"></textarea>
                         </div>
                         <span>为它打分：</span>
-                        <div class="ui star rating"
+                        <div class="ui star rating" id="rate"
                              data-rating="3"
                              data-max-rating="5" id="rating" name="rating">
                         </div>
@@ -177,6 +177,16 @@
     $('.ui.accordion')
         .accordion()
     ;
+</script>
+
+<script>
+    $('.ui.rating')
+        .rating('disable')
+</script>
+
+<script>
+    $('#rate')
+        .rating('enable')
 </script>
 
 <script>
@@ -210,17 +220,6 @@
             init = 1;
         }
     }
-</script>
-
-<script>
-    $('.ui.rating')
-        .rating('disable')
-    ;
-</script>
-
-<script>
-    $('#rating')
-        .rating('enable')
 </script>
 
 </body>

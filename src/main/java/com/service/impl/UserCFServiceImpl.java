@@ -21,14 +21,22 @@ public class UserCFServiceImpl implements UserCFService {
     @Resource(name = "bookServiceImpl")
     private BookService bookService;
 
+    @Resource(name = "movieServiceImpl")
+    private MovieServiceImpl movieService;
+
     public ArrayList<String> userCf() {
         ArrayList<String> list = bookService.bookRandom();
         return list;
     }
 
-    public ArrayList<String> userCf(String account) {
+    public ArrayList<String> userCF2() {
+        ArrayList<String> list = movieService.movieRandom();
+        return list;
+    }
+
+    public ArrayList<String> userCf(String account, String type) {
         //用户数量
-        int N = marksRepository.countUserId();
+        int N = marksRepository.countUserId(type);
         int[][] sparseMatrix = new int[N][N];//建立用户稀疏矩阵【相似度矩阵】
         Map<String, Integer> userItemLength = new HashMap<>();//存储每个用户收藏的物品总数:A 3
         Map<String, Set<String>> itemUserCollection = new HashMap<>();//物品-用户倒排表:a A B
@@ -36,8 +44,8 @@ public class UserCFServiceImpl implements UserCFService {
         Map<String, Integer> userId = new HashMap<>();//辅助存储每个用户的用户ID映射
         Map<Integer, String> idUser = new HashMap<>();//辅助存储每个ID对应的用户映射
         for (int i = 0; i < N; i++) {
-            List<String> user = marksRepository.findUserId();
-            List<String> item = marksRepository.findItemIdByUserId(user.get(i));
+            List<String> user = marksRepository.findUserId(type);
+            List<String> item = marksRepository.findItemIdByUserId(user.get(i), type);
             ArrayList<String> user_item = new ArrayList<>();
             user_item.add(user.get(i));
             for (int k = 0; k < item.size(); k++) {
@@ -111,7 +119,7 @@ public class UserCFServiceImpl implements UserCFService {
               System.out.println("The item " + goods + " for " + account + "'s recommended degree:" + itemRecommendDegree);
             }
         }
-        list.addAll(bookService.bookRandom());
+//        list.addAll(bookService.bookRandom());
         return list;
     }
 

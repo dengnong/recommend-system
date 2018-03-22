@@ -4,6 +4,9 @@ import com.entity.Movie;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by 54472 on 2017/12/23.
  */
@@ -37,4 +40,8 @@ public interface MovieService {
      * 电影名称模糊搜索（数据库）
      */
     Page<Movie> findMovieByKey(String key, Pageable pageable);
+
+    List<Movie> findMovieById(List<String> list);
+
+    ArrayList<String> movieRandom();
 }

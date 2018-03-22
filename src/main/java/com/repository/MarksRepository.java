@@ -25,12 +25,12 @@ public interface MarksRepository extends JpaRepository<Marks, Serializable> {
             "GROUP BY book.author", nativeQuery = true)
     List marksBook(String userId);
 
-    @Query(value = "select COUNT(DISTINCT marks.userId) from marks", nativeQuery = true)
-    int countUserId();
+    @Query(value = "select COUNT(DISTINCT marks.userId) from marks WHERE type = ?1", nativeQuery = true)
+    int countUserId(String type);
 
-    @Query(value = "select DISTINCT marks.userId from marks", nativeQuery = true)
-    List<String> findUserId();
+    @Query(value = "select DISTINCT marks.userId from marks WHERE type = ?1", nativeQuery = true)
+    List<String> findUserId(String type);
 
-    @Query(value = "select marks.itemId from marks where userId = ?1 AND type = 'book'", nativeQuery = true)
-    List<String> findItemIdByUserId(String usetId);
+    @Query(value = "select marks.itemId from marks where userId = ?1 AND type = ?2", nativeQuery = true)
+    List<String> findItemIdByUserId(String userId, String type);
 }

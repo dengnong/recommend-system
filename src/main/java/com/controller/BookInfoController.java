@@ -50,12 +50,14 @@ public class BookInfoController {
         if(httpSession.getAttribute("userInfo") != null) {
             String userId = (String) httpSession.getAttribute("userInfo");
             model.addAttribute("marks", marksService.markInit(userId, bookId, "book"));
-            list = userCFService.userCf(userId);
+            list = userCFService.userCf(userId, "book");
+            list.addAll(bookService.bookRandom());
             list2 = bookService.findBookById(list);
 //            System.out.println(userId + " " + marksService.markInit(userId, bookId, "book"));
         } else {
             model.addAttribute("marks", false);
             list = userCFService.userCf();
+            list.addAll(bookService.bookRandom());
             list2 = bookService.findBookById(list);
         }
         model.addAttribute("recommendBook", list2);

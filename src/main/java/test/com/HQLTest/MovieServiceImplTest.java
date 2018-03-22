@@ -81,4 +81,10 @@ public class MovieServiceImplTest {
             System.out.println(movies.getContent().get(i).getMovieName());
         }
     }
+
+    @Test
+    public void randBook(){
+//        ArrayList<String> list = movieRepository.findRandMovies();
+        System.out.println(movieService.movieRandom().toString());
+    }
 }

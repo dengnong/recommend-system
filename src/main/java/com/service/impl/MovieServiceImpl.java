@@ -8,6 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by 54472 on 2017/12/23.
  */
@@ -43,4 +46,19 @@ public class MovieServiceImpl implements MovieService {
         Page<Movie> movies = movieRepository.findMovieByKey(key, pageable);
         return movies;
     }
+
+    public List<Movie> findMovieById(List<String> list) {
+        ArrayList<Movie> arrayList = new ArrayList<>();
+        for(int i = 0; i < 5; i ++) {
+            arrayList.add(movieRepository.findMovieByMovieId(list.get(i)));
+        }
+        return arrayList;
+    }
+
+    public ArrayList<String> movieRandom() {
+        ArrayList<String> list = movieRepository.findRandMovies();
+        return list;
+    }
+
+
 }

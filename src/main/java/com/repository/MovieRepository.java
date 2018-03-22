@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by 54472 on 2017/12/23.
@@ -41,5 +42,10 @@ public interface MovieRepository extends JpaRepository<Movie, Serializable> {
     @Query(value = "SELECT * FROM movie WHERE name like CONCAT('%',:keyName,'%') GROUP BY movie_id /*#pageable*/", nativeQuery = true)
     Page<Movie> findMovieByKey(@Param("keyName") String key, Pageable pageable);
 
+    @Query(value = "SELECT * FROM movie WHERE movie_id = ?1 GROUP BY director", nativeQuery = true)
+    Movie findMovieByMovieId(String movieId);
 
+    @Query(value = "SELECT movie_id FROM movie  WHERE id >= round(((SELECT MAX(id) FROM movie ))" +
+            " * RAND()*100) LIMIT 5", nativeQuery = true)
+    ArrayList<String> findRandMovies();
 }

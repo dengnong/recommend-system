@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>${movieInfo.get("alt_title")}</title>
+    <title></title>
     <link href="../../statics/css/semantic.css" rel="stylesheet" type="text/css"/>
     <script src="../../statics/js/jquery-3.2.1.min.js"></script>
     <script src="../../statics/js/semantic.min.js"></script>
@@ -101,15 +101,15 @@
                     </div>
                     <br>
                     <div class="ui five column grid">
-                        <c:forEach begin="1" end="5">
+                        <c:forEach items="${recommendMovie}" var="recommendMovies">
                             <div class="column">
                                 <div class="ui small image">
-                                    <img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2506258944.webp">
+                                    <img class="ui centered image" src="${recommendMovies.image}">
                                 </div>
                                 <br>
                                 <div style="text-align:center">
-                                    <a href="#">
-                                        <h3>book's name</h3>
+                                    <a href="/movie?id=${recommendMovies.movieId}" target="_Blank">
+                                        <h4>${recommendMovies.movieName}</h4>
                                     </a>
                                 </div>
                             </div>
@@ -127,7 +127,7 @@
                                     <div class="meta">
                                         <span>${comments.userId} </span>
                                         <span>
-                                            <div class="ui star rating"
+                                            <div class="ui star rating" id="rated"
                                                  data-rating=${comments.score}
                                                  data-max-rating="5">
                                             </div>
@@ -146,7 +146,7 @@
                             <textarea id="content" name="content"></textarea>
                         </div>
                         <span>为它打分：</span>
-                        <div class="ui star rating"
+                        <div class="ui star rating" id="rate"
                              data-rating="3"
                              data-max-rating="5" id="rating" name="rating">
                         </div>
@@ -176,6 +176,16 @@
     $('.ui.accordion')
         .accordion()
     ;
+</script>
+
+<script>
+    $('.ui.rating')
+        .rating('disable')
+</script>
+
+<script>
+    $('#rate')
+        .rating('enable')
 </script>
 
 <script>
@@ -209,17 +219,6 @@
             init = 1;
         }
     }
-</script>
-
-<script>
-    $('.ui.rating')
-        .rating('disable')
-    ;
-</script>
-
-<script>
-    $('#rating')
-        .rating('enable')
 </script>
 
 </body>
