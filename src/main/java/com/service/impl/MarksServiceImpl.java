@@ -1,12 +1,17 @@
 package com.service.impl;
 
+import com.entity.Book;
 import com.entity.Marks;
+import com.entity.Movie;
+import com.repository.BookRepository;
 import com.repository.MarksRepository;
+import com.repository.MovieRepository;
 import com.service.MarksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,6 +22,12 @@ public class MarksServiceImpl implements MarksService {
 
     @Autowired
     private MarksRepository marksRepository;
+
+    @Autowired
+    private BookRepository bookRepository;
+
+    @Autowired
+    private MovieRepository movieRepository;
 
     public void markItem(String userId, String itemId, String type) {
         Marks marks = new Marks(userId, itemId, type, LocalDateTime.now());
@@ -37,8 +48,21 @@ public class MarksServiceImpl implements MarksService {
         marksRepository.delete(marks);
     }
 
-    public List<String> marksBook(String type) {
+    public List<Book> marksBook(String type) {
         List<String> list = marksRepository.countByMarks(type);
-        return list;
+        ArrayList<Book> arrayList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            arrayList.add(bookRepository.findBookByBookId(list.get(i)));
+        }
+        return arrayList;
+    }
+
+    public List<Movie> marksMovie(String type) {
+        List<String> list = marksRepository.countByMarks(type);
+        ArrayList<Movie> arrayList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            arrayList.add(movieRepository.findMovieByMovieId(list.get(i)));
+        }
+        return arrayList;
     }
 }

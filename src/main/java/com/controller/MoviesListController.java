@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.entity.Movie;
+import com.service.MarksService;
 import com.service.MovieService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +22,9 @@ public class MoviesListController {
 
     @Resource(name = "movieServiceImpl")
     private MovieService movieService;
+
+    @Resource(name = "marksServiceImpl")
+    private MarksService marksService;
 
     @RequestMapping("/movies")
     public String moviesList(@RequestParam("kind") String kind,
@@ -47,6 +51,7 @@ public class MoviesListController {
         model.addAttribute("moviesLists", movies);
         model.addAttribute("kind", kind);
         model.addAttribute("sort", sortParam);
+        model.addAttribute("marksList", marksService.marksMovie("movie"));
         return "moviesList";
     }
 }

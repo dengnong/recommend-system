@@ -101,7 +101,19 @@
                 </div>
 
                 <div class="column">
-                    <p>热门搜索</p>
+                    <h4>热门收藏 >></h4>
+                    <div class="ui divided items">
+                        <c:forEach items="${marksList}" var="markMovie" begin="0" end="9">
+                            <div class="item">
+                                <div class="content">
+                                    <a href="/movie?id=${markMovie.movieId}" target="_Blank" class="header">${markMovie.movieName}</a>
+                                    <div class="meta">
+                                        <span>导演: ${markMovie.director}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
                 </div>
             </div>
         </div>

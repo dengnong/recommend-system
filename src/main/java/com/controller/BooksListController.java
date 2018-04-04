@@ -2,6 +2,7 @@ package com.controller;
 
 import com.entity.Book;
 import com.service.BookService;
+import com.service.MarksService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +22,9 @@ public class BooksListController {
 
     @Resource(name = "bookServiceImpl")
     private BookService bookService;
+
+    @Resource(name = "marksServiceImpl")
+    private MarksService marksService;
 
     @RequestMapping("/books")
     public String booksList(@RequestParam("kind") String kind,
@@ -53,6 +57,7 @@ public class BooksListController {
         model.addAttribute("bookLists", books);
         model.addAttribute("kind", kind);
         model.addAttribute("sort", sortParam);
+        model.addAttribute("marksList", marksService.marksBook("book"));
         return "booksList";
     }
 }
