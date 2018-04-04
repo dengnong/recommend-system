@@ -31,6 +31,11 @@ public class GetJsonTest {
     }
 
     @Test
+    public void getDoubanMovieJsonTest() {
+//        System.out.println(getMovieInfoService.getDoubanMoviesJson());
+    }
+
+    @Test
     public void getBookJsonTest() {
         System.out.println(getBookInfoService.getDoubanBooksJson("26986954").get("author_intro"));
     }
@@ -63,6 +68,16 @@ public class GetJsonTest {
             System.out.println(list.get(i).get("alt"));
             System.out.println(list.get(i).get("genres"));
             System.out.println("++++++++i++++++++");
+        }
+    }
+
+    @Test
+    public void newBook() {
+        ArrayList<Map<String, String>> list = new ArrayList<>();
+        list = getBookInfoService.getNewBook();
+        for(int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).get("title"));
+            System.out.println(list.get(i).get("author"));
         }
     }
 }

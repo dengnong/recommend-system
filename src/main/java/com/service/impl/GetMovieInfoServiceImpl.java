@@ -41,6 +41,7 @@ public class GetMovieInfoServiceImpl implements GetMovieInfoService {
         String directorUrl;
         String label;
         String imageUrl;
+        String url;
         int rating;
 
         jsonArray = JSONArray.fromObject(getJsonByUrlService.getJsonByUrl(strUrl).getString("subjects"));
@@ -105,7 +106,7 @@ public class GetMovieInfoServiceImpl implements GetMovieInfoService {
         JSONObject jsonObject = null;
         jsonObject = getJsonByUrlService.getJsonByUrl(strUrl);
         String writer,alt_title,director,country,pubdate,movie_duration,
-                movie_type,cast,average,numRaters,image,summary;
+                movie_type,cast,average,numRaters,image,summary,url;
         try {
             alt_title = jsonObject.getString("alt_title");
         } catch (Exception e) {

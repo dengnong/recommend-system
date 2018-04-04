@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Created by 54472 on 2018/3/1.
@@ -34,5 +35,10 @@ public class MarksServiceImpl implements MarksService {
         Marks marks = marksRepository.findByuserIdAndItemIdAndType(userId, itemId, type);
         if(marks != null)
         marksRepository.delete(marks);
+    }
+
+    public List<String> marksBook(String type) {
+        List<String> list = marksRepository.countByMarks(type);
+        return list;
     }
 }

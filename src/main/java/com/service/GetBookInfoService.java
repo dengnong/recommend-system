@@ -25,4 +25,9 @@ public interface GetBookInfoService {
      * 关键字搜索豆瓣书籍
      */
     ArrayList<Map<String, String>> searchDoubanBook(String key);
+
+    /**
+     * 爬取豆瓣新书速递
+     */
+    ArrayList<Map<String, String>> getNewBook();
 }

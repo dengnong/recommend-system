@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Created by 54472 on 2018/3/1.
@@ -64,5 +65,13 @@ public class MarksServiceImplTest {
     @Test
     public void findItemIdByUserId() {
         System.out.println(marksRepository.findItemIdByUserId("account", "book").get(1));
+    }
+
+    @Test
+    public void countMarks() {
+        List<String> list =  marksRepository.countByMarks("book");
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.service.BookService;
+import com.service.GetBookInfoService;
 import com.service.GetMovieInfoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,9 @@ public class HomeController {
     @Resource(name = "getMovieInfoServiceImpl")
     private GetMovieInfoService getMovieInfoService;
 
+    @Resource(name = "getBookInfoServiceImpl")
+    private GetBookInfoService getBookInfoService;
+
     @Resource(name = "bookServiceImpl")
     private BookService bookService;
 
@@ -27,9 +31,9 @@ public class HomeController {
 //        if(GetMoviesTask.moviesShowingInfo != null) {
 //            model.addAttribute("moviesShowing", GetMoviesTask.moviesShowingInfo);
 //        }
-
         model.addAttribute("randomBooks", bookService.getRandomBookInfo());
         model.addAttribute("moviesShowing", getMovieInfoService.getTimeMoviesJson());
+        model.addAttribute("newBookShowing", getBookInfoService.getNewBook());
         return "home";
     }
 }

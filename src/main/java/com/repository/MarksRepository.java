@@ -33,4 +33,7 @@ public interface MarksRepository extends JpaRepository<Marks, Serializable> {
 
     @Query(value = "select marks.itemId from marks where userId = ?1 AND type = ?2", nativeQuery = true)
     List<String> findItemIdByUserId(String userId, String type);
+
+    @Query(value = "SELECT marks.itemId FROM marks WHERE marks.type = ?1 GROUP BY marks.itemId ORDER BY COUNT(marks.itemId) DESC", nativeQuery = true)
+    List<String> countByMarks(String type);
 }

@@ -63,5 +63,10 @@ public interface BookService  {
 
     ArrayList<String> bookRandom();
 
+    /**
+     * 根据id列表查找书籍信息
+     * @param list
+     * @return
+     */
     List<Book> findBookById(List<String> list);
 }

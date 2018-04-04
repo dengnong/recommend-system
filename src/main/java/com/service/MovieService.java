@@ -41,6 +41,11 @@ public interface MovieService {
      */
     Page<Movie> findMovieByKey(String key, Pageable pageable);
 
+    /**
+     * 传入一个id列表查找相应的条目
+     * @param list
+     * @return
+     */
     List<Movie> findMovieById(List<String> list);
 
     ArrayList<String> movieRandom();

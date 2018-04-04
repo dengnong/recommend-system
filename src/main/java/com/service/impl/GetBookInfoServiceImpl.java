@@ -4,12 +4,20 @@ import com.service.GetBookInfoService;
 import com.service.GetJsonByUrlService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import static sun.net.www.protocol.http.HttpURLConnection.userAgent;
 
 /**
  * Created by 54472 on 2017/12/14.
@@ -24,6 +32,7 @@ public class GetBookInfoServiceImpl implements GetBookInfoService {
     private static final String JuheUrl = "http://apis.juhe.cn/goodbook/query";
     private static final String JuheKey = "e191d9d8436c7ac323341936f2ef975b";
     private static final String douBanBookSearchUrl = "https://api.douban.com/v2/book/search?q=";
+    private static final String douBanNewBookUrl = "https://book.douban.com/latest?icn=index-latestbook-all";
 
     /**
      * Gets juhe books json.
@@ -108,4 +117,51 @@ public class GetBookInfoServiceImpl implements GetBookInfoService {
         }
         return list;
     }
+
+    /**
+     * 爬取豆瓣新书速递
+     */
+    public ArrayList<Map<String, String>> getNewBook() {
+        ArrayList<Map<String, String>> list = new ArrayList<>();
+        Elements elementLi = null;
+        try {
+            elementLi = getBookByUrl(douBanNewBookUrl);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return list;
+        }
+        for(Element element : elementLi) {
+            Map<String, String> map = new HashMap<>();
+            try {
+                Elements elements = element.children();
+                String url = elements.get(0).getElementsByTag("a").attr("href");
+                String title = elements.get(1).getElementsByTag("a").text();
+                String author = elements.get(1).getElementsByClass("color-gray").text();
+//                System.out.println(url);
+                map.put("url", url);
+                map.put("title",title);
+                map.put("author", author);
+            } catch (Exception e) {
+                e.printStackTrace();
+                continue;
+            }
+            list.add(map);
+        }
+        return list;
+    }
+
+    public Elements getBookByUrl(String urlTemp) {
+        Connection connection = Jsoup.connect(urlTemp);
+        connection.header("User-Agent", userAgent);
+        Document doc = null;
+        try {
+            doc = connection.get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Elements elementDiv = doc.getElementsByClass("cover-col-4 pl20 clearfix");
+        Elements elementLi = elementDiv.first().getElementsByTag("li");
+        return elementLi;
+    }
+
 }

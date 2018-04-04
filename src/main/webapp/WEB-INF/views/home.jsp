@@ -25,17 +25,17 @@
 
             <div class="ui right action left icon input">
                 <i class="search icon"></i>
-                <input type="text" placeholder="Search">
+                <input type="text" placeholder="Search" id="searchKey">
                 <div class="ui basic floating dropdown button">
-                    <div class="text">图书</div>
+                    <div class="text" type="text" id="searchText">图书</div>
                     <i class="dropdown icon"></i>
-                    <div class="menu">
+                    <div class="menu" id="searchItem">
                         <div class="item">图书</div>
                         <div class="item">电影</div>
-                        <div class="item">美味</div>
+                        <%--<div class="item">美味</div>--%>
                     </div>
                 </div>
-                <div class="ui dropdown button">Go</div>
+                <div class="ui button" onclick="homeSearch();">Go</div>
             </div>
 
         </div>
@@ -93,11 +93,11 @@
     <div class="ui info message">
         <i class="close icon"></i>
         <div class="header">
-            这就是你想要的吗？
+            欢迎访问社区！
         </div>
         <ul class="list">
-            <li>很高兴再次见到你。</li>
-            <li>你真的知道了吗？</li>
+            <li>您可以随意浏览社区的内容.</li>
+            <li>登陆后您还会获得更多服务.</li>
         </ul>
     </div>
     <div class="ui segment" id="bookSegment">
@@ -109,10 +109,10 @@
                             <c:forEach items="${randomBooks}" var="books" begin="0" end="19">
                                 <div class="item">
                                     <div class="ui tiny image">
-                                        <a href="${books.bookUrl}" target="view_window"><img src="${books.bookImg}"></a>
+                                        <a href="${books.bookId}" target="view_window"><img src="${books.bookImg}"></a>
                                     </div>
                                     <div class="content">
-                                        <a href="${books.bookUrl}" class="header">${books.bookName}</a>
+                                        <a href="/book?id=${books.bookId}" target="_Blank" class="header">${books.bookName}</a>
                                         <div class="meta">
                                             <span>${books.bookAuthor}</span>
                                         </div>
@@ -135,7 +135,19 @@
                         </div>
                     </div>
                     <div class="column">
-                        <p>热门搜索</p>
+                        <h4>新书速递 >></h4>
+                        <div class="ui divided items">
+                            <c:forEach items="${newBookShowing}" var="newBooks" begin="0" end="7">
+                                <div class="item">
+                                    <div class="content">
+                                        <a href="${newBooks.get("url")}" target="_Blank" class="header">${newBooks.get("title")}</a>
+                                        <div class="meta">
+                                            <span>${newBooks.get("author")}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -158,7 +170,7 @@
                                             <div class="center aligned content">
                                                 <div class="header">${movies.get("movieName")}</div>
                                                 <div class="meta">
-                                                    <a href="${movies.get("directorUrl")}">导演: ${movies.get("directorName")}</a>
+                                                    <a href="${movies.get("directorUrl")}" target="_Blank">导演: ${movies.get("directorName")}</a>
                                                 </div>
                                                 <%--<div class="description">--%>
                                                     <%--${movies.get("label")}--%>
@@ -186,7 +198,19 @@
                         </div>
                     </div>
                     <div class="column">
-                        <p>热门搜索</p>
+                        <h4>新片速递 >></h4>
+                        <div class="ui divided items">
+                            <c:forEach items="${moviesShowing}" var="movies" begin="6" end="15">
+                                <div class="item">
+                                    <div class="content">
+                                        <a href="${movies.get("imageLarge")}" target="_Blank" class="header">${movies.get("movieName")}</a>
+                                        <div class="meta">
+                                            <a href="${movies.get("directorUrl")}" target="_Blank">导演: ${movies.get("directorName")}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -325,6 +349,24 @@
     $('.ui.dropdown')
         .dropdown()
     ;
+</script>
+
+<script>
+    homeSearch = function () {
+        var item = document.getElementById("searchText").innerHTML;
+        var key = $("#searchKey").val();
+        if (key.trim() === "" || key.trim() === undefined || key.trim() === null) {
+            alert("请输入关键字");
+            return false;
+        }else if(item == "图书") {
+            window.top.location = "/bookSearch?key=" + key;
+        } else if (item == "电影") {
+            window.top.location = "/movieSearch?key=" + key;
+        } else {
+            return false;
+        }
+        return false;
+    }
 </script>
 
 </body>
