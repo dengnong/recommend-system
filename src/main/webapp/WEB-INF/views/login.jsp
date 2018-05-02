@@ -5,6 +5,7 @@
   Time: 18:22
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -71,17 +72,18 @@
                 </form>
             </div>
         </div>
-        <div class="center aligned column">
+        <div class="column">
             <div class="ui red stacked segment">
-            <div class="ui card">
-                <div class="content">
-                    <div class="header">《${title}》</div>
-                    <div class="meta">${catalog}</div>
-                    <div class="description">
-                        ${sub2}...
+                <c:set var="book" value="${bookList}"/>
+                <div class="ui card">
+                    <div class="content">
+                        <div class="center aligned header"><a href="/book?id=${book.bookId}" target="_Blank" class="header" style="color: black">《${book.bookName}》</a></div>
+                        <%--<div class="meta">${book.bookAuthor}</div>--%>
+                        <div class="description">
+                            ${book.introduction}
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>

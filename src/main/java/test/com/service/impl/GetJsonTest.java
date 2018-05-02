@@ -37,12 +37,12 @@ public class GetJsonTest {
 
     @Test
     public void getBookJsonTest() {
-        System.out.println(getBookInfoService.getDoubanBooksJson("26986954").get("author_intro"));
+        System.out.println(getBookInfoService.getDoubanBooksJson("26986954").get("image"));
     }
 
     @Test
     public void getMovieInfoTest() {
-        System.out.println(getMovieInfoService.getDoubanMoviesJson("26586766").get("writer"));
+        System.out.println(getMovieInfoService.getDoubanMoviesJson("26586766").get("image"));
     }
 
     @Test

@@ -73,7 +73,9 @@ public class GetBookInfoServiceImpl implements GetBookInfoService {
         map.put("average", jsonObject.getJSONObject("rating").getString("average")); //评分
         map.put("pubdate", jsonObject.getString("pubdate")); // 出版年
         map.put("pages", jsonObject.getString("pages")); //页数
-        map.put("image", jsonObject.getJSONObject("images").getString("large")); //图片
+        map.put("image", jsonObject.getJSONObject("images").getString("medium")
+                .replace("https://", "https://images.weserv.nl/?url=")); //图片
+
 
         return map;
     }
